@@ -16,14 +16,15 @@ class GameScene extends Phaser.Scene {
     }
 
     preload() {
-        this.load.image('bg', 'src/image/Bg-play.png');
+        this.load.image('bg-play', 'src/image/Bg-play.png');
         this.load.image('ninja', 'src/image/ninja.png', { frameWidth: 2143, frameHeight: 3343 });
         this.load.image('slime', 'src/imge/Slime.png', { frameWidth: 1527.5, frameHeight: 3817 });
     }
 
     create() {
-        background = this.add.tileSprite(0, 0, 1200, 700, 'bg').setOrigin(0, 0);
-        ninja = this.physics.add.sprite(200, 500, 'ninja').setScale(0.5).setImmovable();
+        background = this.add.tileSprite(0,0,1920,1080,'bg-play').setOrigin(0, 0).setDepth(1).setScale(0.87);
+        
+        ninja = this.physics.add.sprite(200, 500, 'ninja').setScale(0.5).setDepth(3).setImmovable();
 
         //ninja animation
         this.anims.create({
