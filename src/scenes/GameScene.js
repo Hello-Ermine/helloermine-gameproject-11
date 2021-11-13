@@ -24,16 +24,17 @@ class GameScene extends Phaser.Scene {
     create() {
         background = this.add.tileSprite(0,0,1920,1080,'bg-play').setOrigin(0, 0).setDepth(1).setScale(0.87);
         
-        ninja = this.physics.add.sprite(200, 500, 'ninja').setScale(0.5).setDepth(3).setImmovable();
+        ninja = this.physics.add.sprite(2143, 3817, 'ninja').setScale(0.5).setDepth(3).setImmovable();
 
         //ninja animation
         this.anims.create({
             key: 'ninjaAni',
             frames: this.anims.generateFrameNumbers('ninja', {
                 start: 0,
-                end: 7
+                end: 6
             }),
             duration: 500,
+            framerate: 0,
             repeat: -1
         })
 
