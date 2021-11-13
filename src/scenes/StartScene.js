@@ -49,7 +49,7 @@ class StartScene extends Phaser.Scene {
             how.setScale(0.53).setDepth(4).setInteractive();
         
         how.on('pointerup', () => {
-            this.scene.start('GameScene');
+            this.scene.start('HowScene');
         })
         how.on('pointerover', () => {
             how.setScale(0.56);
