@@ -2,10 +2,10 @@ import Phaser from "phaser";
 let bg;
 let ninja;
 let slime;
-let keyW;
-let keyA;
-let keyS;
-let keyD;
+let keyArrowUp;
+let keyArrowLeft;
+let keyArrowDown;
+let keyArrowRight;
 let event;
 
 class GameScene extends Phaser.Scene {
@@ -49,19 +49,19 @@ class GameScene extends Phaser.Scene {
         })
 
         //obj slime
-        objGroup = this.physics.add.group();    
-        event = this.time.addEvent({
-        delay: 5000,
-        callback: function () {
-            slime = this.physics.add.image(1527.5, 100, 'slime');
-            objGroup.add(slime);
-            objGroup.setVelocityY(200);
-            this.physics.add.collider(slime, ninja);
-        },
-        callbackScope: this,
-        loop: true,
-        paused: false,
-    });
+    //     objGroup = this.physics.add.group();    
+    //     event = this.time.addEvent({
+    //     delay: 5000,
+    //     callback: function () {
+    //         slime = this.physics.add.image(1527.5, 100, 'slime');
+    //         objGroup.add(slime);
+    //         objGroup.setVelocityY(200);
+    //         this.physics.add.collider(slime, ninja);
+    //     },
+    //     callbackScope: this,
+    //     loop: true,
+    //     paused: false,
+    // });
 
 
 
@@ -71,10 +71,10 @@ class GameScene extends Phaser.Scene {
 
 
         //key input
-        keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
-        keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
-        keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
-        keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
+        keyArrowUp = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ArrowUp);
+        keyArrowLeft = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ArrowLeft);
+        keyArrowDown = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ArrowDown);
+        keyArrowRight = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ArrowRight);
 
     }
 
@@ -82,26 +82,26 @@ class GameScene extends Phaser.Scene {
         bg.tilePositionX -= 10;
         slime.anims.play('slimeAni', true);
 
-        for (let i = 0; i < objGroup.getChildren().length; i++) {
-            if (objGroup.getChildren()[i].y < 350) {
-                    objGroup.getChildren()[i].destroy();
-            }
-        }
+        // for (let i = 0; i < objGroup.getChildren().length; i++) {
+        //     if (objGroup.getChildren()[i].y < 350) {
+        //             objGroup.getChildren()[i].destroy();
+        //     }
+        // }
 
 
 
 
         ninja.anims.play('ninjaAni', true);
-        if (keyW.isDown) {
-            ninja.setVelocityY(-500);
-        } else if (keyS.isDown) {
+        if (keyArrowUp.isDown) {
             ninja.setVelocityY(500);
+        } else if (keyArrowDown.isDown) {
+            ninja.setVelocityY(-500);
         } else {
             ninja.setVelocityY(0);
         }
-        if (keyA.isDown) {
+        if (keyArrowLeft.isDown) {
             ninja.setVelocityX(-500);
-        } else if (keyD.isDown) {
+        } else if (keyArrowRight.isDown) {
             ninja.setVelocityX(500);
         } else {
             ninja.setVelocityX(0);
