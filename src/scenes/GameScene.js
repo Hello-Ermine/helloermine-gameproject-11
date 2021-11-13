@@ -24,10 +24,18 @@ class GameScene extends Phaser.Scene {
     }
 
     create() {
+<<<<<<< Updated upstream
         background = this.add.tileSprite(0,0,1920,1080,'bg-play').setOrigin(0, 0).setDepth(1).setScale(0.87);
         wall = this.add.image(0,-300,'bg-play').setOrigin(0, 0).setDepth(2).setScale(0.87).setVisible(false);
         ninja = this.physics.add.sprite(300, 300, 'ninja').setDepth(5).setScale(0.5);
         slime = this.physics.add.sprite(200, 500, 'slime').setDepth(6).setScale(0.5);
+=======
+        background= this.add.tileSprite(0,0,1920,1080,'bg-play').setOrigin(0, 0).setDepth(1).setScale(0.87);
+        
+        ninja = this.physics.add.sprite(525, 300, 'ninja');
+        ninja.setScale(0.5).setDepth(10).setCollideWorldBounds(true);
+
+>>>>>>> Stashed changes
         //ninja animation
         this.anims.create({
             key: 'ninjaAni-left',
@@ -93,7 +101,11 @@ class GameScene extends Phaser.Scene {
     }
 
     update(delta, time) {
+<<<<<<< Updated upstream
         background.tilePositionX += 3;
+=======
+        bg.tilePositionX += 3;
+>>>>>>> Stashed changes
         slime.anims.play('slimeAni', true);
 
         // for (let i = 0; i < objGroup.getChildren().length; i++) {
