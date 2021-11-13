@@ -1,10 +1,7 @@
 import Phaser from "phaser";
-let bgplay;
+let bg;
 let ninja;
 let slime;
-let objGroup;
-let gameover;
-let win;
 let keyArrowUp;
 let keyArrowLeft;
 let keyArrowDown;
@@ -19,13 +16,13 @@ class GameScene extends Phaser.Scene {
     }
 
     preload() {
-        this.load.image('bgplay', 'src/image/Bg-play.png');
+        this.load.image('bg-play', 'src/image/Bg-play.png');
         this.load.spritesheet('ninja', 'src/image/ninja.png', { frameWidth: 2143, frameHeight: 3343 });
         this.load.spritesheet('slime', 'src/imge/Slime.png', { frameWidth: 1527.5, frameHeight: 3817 });
     }
 
     create() {
-        background = this.add.tileSprite(0,0,1920,1080,'bgplay').setOrigin(0, 0).setDepth(1).setScale(0.87);
+        background = this.add.tileSprite(0,0,1920,1080,'bg-play').setOrigin(0, 0).setDepth(1).setScale(0.87);
         
         ninja = this.physics.add.sprite(2143, 3817, 'ninja').setScale(0.5).setDepth(3);
 
@@ -64,20 +61,19 @@ class GameScene extends Phaser.Scene {
         })
 
         //obj slime
-        objninja = this.physics.add.image(2143, 3817, 'ninja').setImmovable();
-         objGroup = this.physics.add.group();    
-         event = this.time.addEvent({
-         delay: 5000,
-         callback: function () {
-             objslime = this.physics.add.image(1527.5, 100, 'slime');
-             objGroup.add(slime);
-             objGroup.setVelocityY(200);
-             this.physics.add.collider(slime, ninja);
-         },
-         callbackScope: this,
-         loop: true,
-         //paused: false,
-     });
+    //     objGroup = this.physics.add.group();    
+    //     event = this.time.addEvent({
+    //     delay: 5000,
+    //     callback: function () {
+    //         slime = this.physics.add.image(1527.5, 100, 'slime');
+    //         objGroup.add(slime);
+    //         objGroup.setVelocityY(200);
+    //         this.physics.add.collider(slime, ninja);
+    //     },
+    //     callbackScope: this,
+    //     loop: true,
+    //     paused: false,
+    // });
 
 
 
@@ -95,15 +91,14 @@ class GameScene extends Phaser.Scene {
     }
 
     update(delta, time) {
-        bgplay.tilePositionX -= 10;
-        ninja.anims.play('ninjaAni', true); //ถ้าไม่ขึ้นสมามรถลบได้
+        bg.tilePositionX -= 10;
         slime.anims.play('slimeAni', true);
 
-         for (let i = 0; i < objGroup.getChildren().length; i++) {
-             if (objGroup.getChildren()[i].x < 350) {
-                     objGroup.getChildren()[i].destroy();
-             }
-         }
+        // for (let i = 0; i < objGroup.getChildren().length; i++) {
+        //     if (objGroup.getChildren()[i].y < 350) {
+        //             objGroup.getChildren()[i].destroy();
+        //     }
+        // }
 
 
 
