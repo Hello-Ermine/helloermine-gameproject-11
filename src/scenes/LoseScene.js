@@ -21,7 +21,7 @@ class LoseScene extends Phaser.Scene {
         bg.setOrigin(0,0).setDepth(1).setScale(0.87);
 
 
-        exit = this.add.image(525, 530, 'exit')
+        exit = this.add.image(525, 450, 'exit')
         exit.setScale(0.35).setDepth(2).setInteractive();
 
         exit.on('pointerup', () => {
