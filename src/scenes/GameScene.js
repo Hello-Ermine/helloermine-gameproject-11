@@ -1,5 +1,5 @@
 import Phaser from "phaser";
-let background;
+let bg;
 let ninja;
 let keyW;
 let keyA;
