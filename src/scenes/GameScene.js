@@ -8,7 +8,6 @@ let keyArrowDown;
 let keyArrowRight;
 let wall;
 let event;
-let wall;
 
 class GameScene extends Phaser.Scene {
     constructor(test) {
