@@ -17,7 +17,7 @@ class HowScene extends Phaser.Scene {
 
     create() {
         bg = this.add.tileSprite(0,0,1920,1080,'bghow');
-        bg.setOrigin(0,0).setDepth(1).setScale(0.87);
+        bg.setOrigin(0,0).setDepth(1).setScale(1);
 
 
         exit = this.add.image(525, 530, 'exit')
