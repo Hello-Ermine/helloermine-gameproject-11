@@ -21,9 +21,9 @@ const config = {
         }
     },
     scene: [
-        //StartScene,
-        //GameScene,
-        //HowScene,
+        StartScene,
+        GameScene,
+        HowScene,
         LoseScene,
         WinScene 
     ],
