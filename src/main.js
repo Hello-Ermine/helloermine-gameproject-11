@@ -3,6 +3,7 @@ import Phaser from 'phaser';
 import GameScene from './scenes/GameScene';
 import StartScene from './scenes/StartScene';
 
+import LoseScene from './scenes/LoseScene';
 import WinScene from './scenes/WinScene';
 
 const config = {
@@ -20,6 +21,7 @@ const config = {
         }
     },
     scene: [
+        LoseScene,
         WinScene ,
         StartScene,
          GameScene

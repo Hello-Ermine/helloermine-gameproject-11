@@ -12,12 +12,12 @@ class WinScene extends Phaser.Scene {
     preload() {
         //button
         //this.stage.backgroundColor = '#F0F8FF';
-        this.load.image('bg', 'src/image/win.png');
+        this.load.image('bgwin', 'src/image/win.png');
         this.load.image('exit', 'src/image/exit.png');
     }
 
     create() {
-        bg = this.add.tileSprite(0,0,1920,1080,'bg');
+        bg = this.add.tileSprite(0,0,1920,1080,'bgwin');
         bg.setOrigin(0,0).setDepth(1).setScale(0.87);
 
 
