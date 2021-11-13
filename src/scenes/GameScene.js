@@ -17,20 +17,31 @@ class GameScene extends Phaser.Scene {
 
     preload() {
         this.load.image('bg-play', 'src/image/Bg-play.png');
-        this.load.image('ninja', 'src/image/ninja.png', { frameWidth: 2143, frameHeight: 3343 });
-        this.load.image('slime', 'src/imge/Slime.png', { frameWidth: 1527.5, frameHeight: 3817 });
+        this.load.spritesheet('ninja', 'src/image/ninja.png', { frameWidth: 2143, frameHeight: 3343 });
+        this.load.spritesheet('slime', 'src/imge/Slime.png', { frameWidth: 1527.5, frameHeight: 3817 });
     }
 
     create() {
         background = this.add.tileSprite(0,0,1920,1080,'bg-play').setOrigin(0, 0).setDepth(1).setScale(0.87);
         
-        ninja = this.physics.add.sprite(2143, 3817, 'ninja').setScale(0.5).setDepth(3).setImmovable();
+        ninja = this.physics.add.sprite(2143, 3817, 'ninja').setScale(0.5).setDepth(3);
 
         //ninja animation
         this.anims.create({
-            key: 'ninjaAni',
+            key: 'ninjaAni-left',
             frames: this.anims.generateFrameNumbers('ninja', {
                 start: 0,
+                end: 2
+            }),
+            duration: 500,
+            framerate: 0,
+            repeat: -1
+        })
+
+        this.anims.create({
+            key: 'ninjaAni-right',
+            frames: this.anims.generateFrameNumbers('ninja', {
+                start: 3,
                 end: 6
             }),
             duration: 500,
@@ -92,7 +103,7 @@ class GameScene extends Phaser.Scene {
 
 
 
-        ninja.anims.play('ninjaAni', true);
+        ninja.anims.play('ninjaAni-right', true);
         if (keyArrowUp.isDown) {
             ninja.setVelocityY(500);
         } else if (keyArrowDown.isDown) {
@@ -102,8 +113,10 @@ class GameScene extends Phaser.Scene {
         }
         if (keyArrowLeft.isDown) {
             ninja.setVelocityX(-500);
+            ninja.anims.play('ninjaAni-left', true,)
         } else if (keyArrowRight.isDown) {
             ninja.setVelocityX(500);
+            ninja.anims.play('ninjaAni-right', true,)
         } else {
             ninja.setVelocityX(0);
         }
