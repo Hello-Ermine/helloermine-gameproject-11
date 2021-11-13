@@ -11,7 +11,6 @@ class WinScene extends Phaser.Scene {
 
     preload() {
         //button
-        //this.stage.backgroundColor = '#F0F8FF';
         this.load.image('bgwin', 'src/image/win.png');
         this.load.image('exit', 'src/image/exit.png');
     }

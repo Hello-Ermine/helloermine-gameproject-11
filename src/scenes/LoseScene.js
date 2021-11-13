@@ -11,7 +11,7 @@ class LoseScene extends Phaser.Scene {
 
     preload() {
         //button
-        //this.stage.backgroundColor = '#F0F8FF';
+        
         this.load.image('bglose', 'src/image/lose.png');
         this.load.image('exit', 'src/image/exit.png');
     }
