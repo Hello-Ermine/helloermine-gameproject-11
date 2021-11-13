@@ -3,6 +3,8 @@ import Phaser from 'phaser';
 import GameScene from './scenes/GameScene';
 import StartScene from './scenes/StartScene';
 
+import LoseScene from './scenes/LoseScene';
+import WinScene from './scenes/WinScene';
 
 const config = {
     // For more settings see <https://github.com/photonstorm/phaser/blob/master/src/boot/Config.js>
@@ -10,7 +12,7 @@ const config = {
     pixelArt: true,
     roundPixels: true,
     parent: 'content',
-    width: 1000,
+    width: 1040,
     height: 600,
     physics: {
         default: 'arcade',
@@ -20,7 +22,9 @@ const config = {
     },
     scene: [
         StartScene,
-        GameScene
+        GameScene,
+        LoseScene,
+        WinScene 
     ],
     
     

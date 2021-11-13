@@ -3,6 +3,7 @@ import Phaser from "phaser";
 let bg;
 let play;
 let how;
+let name;
 
 class StartScene extends Phaser.Scene {
     constructor(test) {
@@ -13,7 +14,9 @@ class StartScene extends Phaser.Scene {
 
     preload() {
         //bg
-        this.load.image('bg', 'src/image/Bg-start.png');
+        this.load.image('bgstart', 'src/image/Bg-start.png');
+        //game-name
+        this.load.image('name', 'src/image/namegame.png');
         //button
         this.load.image('play', 'src/image/play.png');
         this.load.image('how', 'src/image/how to play.png');
@@ -21,35 +24,38 @@ class StartScene extends Phaser.Scene {
 
     create() {
         //bg
-        bg = this.add.tileSprite(0,0,1920,1080,'bg');
+        bg = this.add.tileSprite(0,0,1920,1080,'bgstart');
         bg.setOrigin(0,0).setDepth(1).setScale(0.87);
+
+        name = this.add.image(525, 150, 'name')
+        name.setScale(0.7).setDepth(2)
 
         //button-play
         play = this.add.image(525, 300, 'play')
-            play.setScale(0.3).setDepth(5).setInteractive();
+            play.setScale(0.38).setDepth(5).setInteractive();
 
-        play.on('pointerup', () => {
+         play.on('pointerup', () => {
             this.scene.start('GameScene');
+         })
+         play.on('pointerover', () => {
+            play.setScale(0.41);
         })
-        play.on('pointerover', () => {
-            play.setScale(0.34);
-        })
-        play.on('pointerout', () => {
-            play.setScale(0.3);
+         play.on('pointerout', () => {
+            play.setScale(0.38);
         })
 
         //button-how to play
         how = this.add.image(525, 400, 'how')
-            how.setScale(0.3).setDepth(5).setInteractive();
+            how.setScale(0.53).setDepth(4).setInteractive();
         
         how.on('pointerup', () => {
             this.scene.start('GameScene');
         })
         how.on('pointerover', () => {
-            play.setScale(0.36);
+            how.setScale(0.56);
         })
         how.on('pointerout', () => {
-            play.setScale(0.34);
+            how.setScale(0.53);
         })
 
 
