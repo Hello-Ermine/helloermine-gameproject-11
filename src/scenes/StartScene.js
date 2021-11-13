@@ -14,7 +14,7 @@ class StartScene extends Phaser.Scene {
 
     preload() {
         //bg
-        this.load.image('bg', 'src/image/Bg-start.png');
+        this.load.image('bgstart', 'src/image/Bg-start.png');
         //game-name
         this.load.image('name', 'src/image/namegame.png');
         //button
@@ -24,7 +24,7 @@ class StartScene extends Phaser.Scene {
 
     create() {
         //bg
-        bg = this.add.tileSprite(0,0,1920,1080,'bg');
+        bg = this.add.tileSprite(0,0,1920,1080,'bgstart');
         bg.setOrigin(0,0).setDepth(1).setScale(0.87);
 
         name = this.add.image(525, 150, 'name')
@@ -62,7 +62,7 @@ class StartScene extends Phaser.Scene {
     }
 
     update() {
-        bg.tilePositionX += 3;
+        //bg.tilePositionX += 3;
         
     }
 }
