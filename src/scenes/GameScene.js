@@ -1,10 +1,12 @@
 import Phaser from "phaser";
 let bg;
 let ninja;
+let slime;
 let keyW;
 let keyA;
 let keyS;
 let keyD;
+let event;
 
 class GameScene extends Phaser.Scene {
     constructor(test) {
@@ -16,11 +18,12 @@ class GameScene extends Phaser.Scene {
     preload() {
         this.load.image('bg', 'src/image/Bg-play.png');
         this.load.image('ninja', 'src/image/ninja.png', { frameWidth: 2143, frameHeight: 3343 });
+        this.load.image('slime', 'src/imge/Slime.png', { frameWidth: 1527.5, frameHeight: 3817 });
     }
 
     create() {
         background = this.add.tileSprite(0, 0, 1200, 700, 'bg').setOrigin(0, 0);
-        ninja = this.physics.add.sprite(200, 500, 'ninja').setScale(0.5);
+        ninja = this.physics.add.sprite(200, 500, 'ninja').setScale(0.5).setImmovable();
 
         //ninja animation
         this.anims.create({
@@ -32,6 +35,32 @@ class GameScene extends Phaser.Scene {
             duration: 500,
             repeat: -1
         })
+
+        //slime animetion
+        this.anims.create({
+            key: 'slimeAni',
+            frames: this.anims.generateFrameNumbers('slime', {
+                start: 0,
+                end: 1
+            }),
+            duration: 1000,
+            repeat: -1
+        })
+
+        //obj slime
+        objGroup = this.physics.add.group();    
+        event = this.time.addEvent({
+        delay: 5000,
+        callback: function () {
+            slime = this.physics.add.image(1527.5, 100, 'slime');
+            objGroup.add(slime);
+            objGroup.setVelocityY(200);
+            this.physics.add.collider(slime, ninja);
+        },
+        callbackScope: this,
+        loop: true,
+        paused: false,
+    });
 
 
 
@@ -50,9 +79,18 @@ class GameScene extends Phaser.Scene {
 
     update(delta, time) {
         bg.tilePositionX -= 10;
+        slime.anims.play('slimeAni', true);
+
+        for (let i = 0; i < objGroup.getChildren().length; i++) {
+            if (objGroup.getChildren()[i].y < 350) {
+                    objGroup.getChildren()[i].destroy();
+            }
+        }
+
+
+
 
         ninja.anims.play('ninjaAni', true);
-
         if (keyW.isDown) {
             ninja.setVelocityY(-500);
         } else if (keyS.isDown) {
