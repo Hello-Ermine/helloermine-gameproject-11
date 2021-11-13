@@ -8,6 +8,7 @@ let keyArrowDown;
 let keyArrowRight;
 let wall;
 let event;
+let wall;
 
 class GameScene extends Phaser.Scene {
     constructor(test) {
@@ -17,8 +18,7 @@ class GameScene extends Phaser.Scene {
     }
 
     preload() {
-        this.load.image('bg-play', 'src/image/Bg-play.png');
-        this.load.image('wall', 'src/image/wall.jpg');
+        this.load.image('bg-play', 'src/image/Bg-play.png')
         this.load.spritesheet('ninja', 'src/image/ninja.png', { frameWidth: 2143, frameHeight: 3343 });
         this.load.spritesheet('slime', 'src/image/Slime.png', { frameWidth: 1269.5, frameHeight: 906 });
     }
@@ -95,7 +95,7 @@ class GameScene extends Phaser.Scene {
     }
 
     update(delta, time) {
-        background.tilePositionX -= 10;
+        background.tilePositionX += 3;
         slime.anims.play('slimeAni', true);
 
         // for (let i = 0; i < objGroup.getChildren().length; i++) {
@@ -103,9 +103,6 @@ class GameScene extends Phaser.Scene {
         //             objGroup.getChildren()[i].destroy();
         //     }
         // }
-
-
-
 
         ninja.anims.play('ninjaAni-right', true);
         if (keyArrowUp.isDown) {
