@@ -31,12 +31,15 @@ class GameScene extends Phaser.Scene {
 
     create() {
 
-        background = this.add.tileSprite(0,0,1920,1080,'bg-play').setOrigin(0, 0).setDepth(1).setScale(0.87);
+        background = this.add.tileSprite(0,0,1200,700,'bg-play').setOrigin(0, 0).setDepth(1).setScale(0.87);
         wall = this.add.image(0,-300,'bg-play').setOrigin(0, 0).setDepth(2).setScale(0.87).setVisible(false);
 
 
         ninja = this.physics.add.sprite(200, 400, 'ninja').setDepth(5).setScale(0.15);
-        slime = this.physics.add.sprite(700, 400, 'slime').setDepth(5).setScale(0.07);
+        slime = this.physics.add.staticGroup().setDepth(5).setScale(0.07);
+        slime.create(700, 400, 'slime');
+        slime.create(600, 200, 'slime');
+        slime.create(400, 500, 'slime');
 
         //ninja animation
         this.anims.create({
@@ -73,8 +76,10 @@ class GameScene extends Phaser.Scene {
             repeat: -1
         });
 
+        
+
         //obj slime
-         objGroup = this.physics.add.group();    
+         objGroup = this.physics.add.group();  
          event = this.time.addEvent({
          delay: 5000,
          callback: function () {
