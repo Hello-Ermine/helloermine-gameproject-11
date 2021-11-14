@@ -2,13 +2,13 @@ import Phaser from "phaser";
 let background;
 let ninja;
 let slime;
-// let keyArrowUp;
+ฝฝ let keyArrowUp;
 // let keyArrowLeft;
 // let keyArrowDown;
 // let keyArrowRight;
 let cursor;
 let wall;
-//let event;
+let event;
 
 class GameScene extends Phaser.Scene {
     constructor(test) {
@@ -64,6 +64,23 @@ class GameScene extends Phaser.Scene {
             framerate: 0,
             repeat: -1
         })
+
+        objninja = this.physics.add.image(2143, 3817, 'ninja').setImmovable();
+        objGroup = this.physics.add.group();    
+        event = this.time.addEvent({
+        delay: 5000,
+        callback: function () {
+            objslime = this.physics.add.image(1527.5, 100, 'slime');
+            objGroup.add(slime);
+            objGroup.setVelocityY(200);
+            this.physics.add.collider(slime, ninja);
+        },
+        callbackScope: this,
+        loop: true,
+        //paused: false,
+    });
+      
+
 
         //obj slime
     //     objGroup = this.physics.add.group();    
