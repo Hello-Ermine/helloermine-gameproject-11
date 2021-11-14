@@ -24,13 +24,13 @@ class GameScene extends Phaser.Scene {
     }
 
     preload() {
-        this.load.image('bg-play', 'src/image/Bg-play.png')
+        this.load.image('bg-play', 'src/image/Bg-play.png');
         this.load.spritesheet('ninja', 'src/image/ninja.png', { frameWidth: 428.5, frameHeight: 669});
         this.load.spritesheet('slime', 'src/image/Slime.png', { frameWidth: 1269.5, frameHeight: 906 });
-        this.load.image('home', 'src/image/home.png')
+        this.load.image('home', 'src/image/home.png');
         this.load.image('exit', 'src/image/exit.png');
 
-        // this.load.sound('music1','src/sound/musicplay.wav')
+        this.load.sound('music1','src/sound/musicplay.wav');
     }
 
     create() {
@@ -41,6 +41,11 @@ class GameScene extends Phaser.Scene {
         slime = this.physics.add.sprite(700, 400, 'slime').setDepth(5).setScale(0.07)
         // slime2 = this.physics.add.sprite(600, 400, 'slime').setDepth(6).setScale(0.07);
         home = this.physics.add.image(5000,350,'home').setDepth(7).setScale(1).setOffset(0,-40);
+           //slime = this.physics.add.sprite(700, 400, 'slime').setDepth(5).setScale(0.07);
+        slime = this.physics.add.Group().setDepth(5).setScale(0.07);
+        slime.create(700, 400, 'slime');
+        slime.create(600, 200, 'slime');
+        slime.create(400, 500, 'slime');
        
         //ninja animation
         this.anims.create({
@@ -52,7 +57,7 @@ class GameScene extends Phaser.Scene {
             duration: 500,
             framerate: 0,
             repeat: -1
-        })
+        });
 
         this.anims.create({
             key: 'ninjaAni-right',
@@ -63,7 +68,7 @@ class GameScene extends Phaser.Scene {
             duration: 500,
             framerate: 0,
             repeat: -1
-        })
+        });
 
         //slime animation
         this.anims.create({
@@ -93,22 +98,22 @@ class GameScene extends Phaser.Scene {
      });
     
     //exit 
-    exit = this.add.image(930, 550, 'exit')
+    exit = this.add.image(930, 550, 'exit');
     exit.setScale(0.35).setDepth(2).setInteractive();
 
     exit.on('pointerup', () => {
         this.scene.start('StartScene');
-    })
+    });
     exit.on('pointerover', () => {
         exit.setScale(0.38);
-    })
+    });
     exit.on('pointerout', () => {
         exit.setScale(0.35);
-    })
+    });
 
       //เสียง
-        // music1 = this.sound.add('music1').setVolume(0.2);
-        // music1.play({loop: true});
+         music1 = this.sound.add('music1').setVolume(0.2);
+         music1.play({loop: true});
  
         //เปลี่ยนsceneจบ
         this.physics.add.collider(ninja, slime, ()=>{
@@ -175,7 +180,13 @@ class GameScene extends Phaser.Scene {
                 ninja.anims.play('ninjaAni-right',true);
             }else{
                 ninja.setVelocityX(0);
-            }        
+            }    
+        // destroy slime   
+         for (let i = 0; i < objGroup.getChildren().length; i++) {
+             if (objGroup.getChildren()[i].x < -1200) {
+                     objGroup.getChildren()[i].destroy();
+             }
+         }    
 
     }    
 }
