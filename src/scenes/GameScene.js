@@ -2,12 +2,13 @@ import Phaser from "phaser";
 let background;
 let ninja;
 let slime;
-let keyArrowUp;
-let keyArrowLeft;
-let keyArrowDown;
-let keyArrowRight;
+// let keyArrowUp;
+// let keyArrowLeft;
+// let keyArrowDown;
+// let keyArrowRight;
+let cursor;
 let wall;
-let event;
+//let event;
 
 class GameScene extends Phaser.Scene {
     constructor(test) {
@@ -26,8 +27,6 @@ class GameScene extends Phaser.Scene {
 
         background = this.add.tileSprite(0,0,1920,1080,'bg-play').setOrigin(0, 0).setDepth(1).setScale(0.87);
         wall = this.add.image(0,-300,'bg-play').setOrigin(0, 0).setDepth(2).setScale(0.87).setVisible(false);
-
-
         ninja = this.physics.add.sprite(200, 400, 'ninja').setDepth(5).setScale(0.15);
         slime = this.physics.add.sprite(700, 400, 'slime').setDepth(5).setScale(0.07);
 
@@ -84,15 +83,15 @@ class GameScene extends Phaser.Scene {
 
 
 
-
+     cursor = this.input.keyboard.createCursorKeys();
 
 
 
         //key input
-        keyArrowUp = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ArrowUp);
-        keyArrowLeft = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ArrowLeft);
-        keyArrowDown = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ArrowDown);
-        keyArrowRight = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ArrowRight);
+        // keyArrowUp = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ArrowUp);
+        // keyArrowLeft = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ArrowLeft);
+        // keyArrowDown = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ArrowDown);
+        // keyArrowRight = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ArrowRight);
 
     }
 
@@ -100,6 +99,10 @@ class GameScene extends Phaser.Scene {
         background.tilePositionX += 3;
         slime.anims.play('slimeAni', true);
 
+
+
+
+        
         // for (let i = 0; i < objGroup.getChildren().length; i++) {
         //     if (objGroup.getChildren()[i].y < 350) {
         //             objGroup.getChildren()[i].destroy();
@@ -107,23 +110,40 @@ class GameScene extends Phaser.Scene {
         // }
 
         ninja.anims.play('ninjaAni-right', true);
-        if (keyArrowUp.isDown) {
-            ninja.setVelocityY(500);
-        } else if (keyArrowDown.isDown) {
-            ninja.setVelocityY(-500);
-        } else {
-            ninja.setVelocityY(0);
-        }
-        if (keyArrowLeft.isDown) {
-            ninja.setVelocityX(-500);
-            ninja.anims.play('ninjaAni-left', true,)
-        } else if (keyArrowRight.isDown) {
-            ninja.setVelocityX(500);
-            ninja.anims.play('ninjaAni-right', true,)
-        } else {
-            ninja.setVelocityX(0);
-        }
+        // if (keyArrowUp.isDown) {
+        //     ninja.setVelocityY(500);
+        // } else if (keyArrowDown.isDown) {
+        //     ninja.setVelocityY(-500);
+        // } else {
+        //     ninja.setVelocityY(0);
+        // }
+        // if (keyArrowLeft.isDown) {
+        //     ninja.setVelocityX(-500);
+        //     ninja.anims.play('ninjaAni-left', true,)
+        // } else if (keyArrowRight.isDown) {
+        //     ninja.setVelocityX(500);
+        //     ninja.anims.play('ninjaAni-right', true,)
+        // } else {
+        //     ninja.setVelocityX(0);
 
+
+        // }
+        if(cursor.up.isDown){
+           player.setVelocityY(-500);
+         }else if(cursor.down.isDown){
+             player.setVelocityY(500);
+         }else{
+            player.setVelocityY(0);
+         }
+        if(cursor.left.isDown){
+           player.setVelocityX(-500);
+            // ninja.anims.play('ninjaAni-left', true);
+         }else if(cursor.right.isDown){
+             player.setVelocityX(500);
+            //  ninja.anims.play('ninjaAni-right', true);
+         }else{
+             player.setVelocityX(0);
+        }
         
     }
 }
