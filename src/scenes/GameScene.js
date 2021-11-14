@@ -50,7 +50,7 @@ class GameScene extends Phaser.Scene {
             duration: 500,
             framerate: 0,
             repeat: -1
-        })
+        });
 
         this.anims.create({
             key: 'ninjaAni-right',
@@ -61,7 +61,7 @@ class GameScene extends Phaser.Scene {
             duration: 500,
             framerate: 0,
             repeat: -1
-        })
+        });
 
         //slime animation
         this.anims.create({
@@ -73,7 +73,7 @@ class GameScene extends Phaser.Scene {
             duration: 1000,
             framerate: 0,
             repeat: -1
-        })
+        });
 
     //     objninja = this.physics.add.image(2143, 3817, 'ninja').setImmovable();
     //      objGroup = this.physics.add.group();    
@@ -91,18 +91,18 @@ class GameScene extends Phaser.Scene {
     //  });
     
     //exit 
-    exit = this.add.image(930, 550, 'exit')
+    exit = this.add.image(930, 550, 'exit');
     exit.setScale(0.35).setDepth(2).setInteractive();
 
     exit.on('pointerup', () => {
         this.scene.start('StartScene');
-    })
+    });
     exit.on('pointerover', () => {
         exit.setScale(0.38);
-    })
+    });
     exit.on('pointerout', () => {
         exit.setScale(0.35);
-    })
+    });
 
       //เสียง
          music1 = this.sound.add('music1').setVolume(0.2);
