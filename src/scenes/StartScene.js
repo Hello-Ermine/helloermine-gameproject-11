@@ -32,7 +32,7 @@ class StartScene extends Phaser.Scene {
         name = this.add.image(525, 150, 'name');
         name.setScale(0.7).setDepth(2);
 
-         musicstart = this.add.audio('musicstart').setVolume(0.2);
+         //musicstart = this.add.audio('musicstart').setVolume(0.2);
          //musicstart.play({loop: true});
         
         //button-play
@@ -68,7 +68,7 @@ class StartScene extends Phaser.Scene {
 
     update() {
         bg.tilePositionX += 1;
-        musicstart.play({loop: true});
+       // musicstart.play({loop: true});
     }
 }
 
