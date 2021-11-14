@@ -109,6 +109,8 @@ class GameScene extends Phaser.Scene {
     update(delta, time) {
         background.tilePositionX += 3;
         slime.anims.play('slimeAni', true);
+        if(true){home.setVelocityX(-100);}
+        if(true){slime.setVelocityX(10);}
 
          for (let i = 0; i < objGroup.getChildren().length; i++) {
              if (objGroup.getChildren()[i].x < -3500) {
