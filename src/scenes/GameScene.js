@@ -23,13 +23,13 @@ class GameScene extends Phaser.Scene {
     }
 
     preload() {
-        this.load.image('bg-play', 'src/image/Bg-play.png')
+        this.load.image('bg-play', 'src/image/Bg-play.png');
         this.load.spritesheet('ninja', 'src/image/ninja.png', { frameWidth: 428.5, frameHeight: 669});
         this.load.spritesheet('slime', 'src/image/Slime.png', { frameWidth: 1269.5, frameHeight: 906 });
-        this.load.image('home', 'src/image/home.png')
+        this.load.image('home', 'src/image/home.png');
         this.load.image('exit', 'src/image/exit.png');
 
-        // this.load.sound('music1','src/sound/musicplay.wav')
+        this.load.sound('music1','src/sound/musicplay.wav');
     }
 
     create() {
@@ -105,8 +105,8 @@ class GameScene extends Phaser.Scene {
     })
 
       //เสียง
-        // music1 = this.sound.add('music1').setVolume(0.2);
-        // music1.play({loop: true});
+         music1 = this.sound.add('music1').setVolume(0.2);
+         music1.play({loop: true});
  
         //เปลี่ยนsceneจบ
         this.physics.add.collider(ninja, slime, ()=>{
