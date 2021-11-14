@@ -39,10 +39,9 @@ class GameScene extends Phaser.Scene {
         background = this.add.tileSprite(0,0,1920,1080,'bg-play').setOrigin(0, 0).setDepth(1).setScale(0.87);
         wall = this.add.image(0,-300,'bg-play').setOrigin(0, 0).setDepth(2).setScale(0.87).setVisible(false);
         ninja = this.physics.add.sprite(200, 400, 'ninja').setDepth(5).setScale(0.15).setImmovable().setCollideWorldBounds(true);
-        slime = this.physics.add.sprite(700, 400, 'slime').setDepth(5).setScale(0.07)
-        // slime2 = this.physics.add.sprite(600, 400, 'slime').setDepth(6).setScale(0.07);
         home = this.physics.add.image(5000,350,'home').setDepth(7).setScale(1).setOffset(0,-40);
-           //slime = this.physics.add.sprite(700, 400, 'slime').setDepth(5).setScale(0.07);
+        slime = this.physics.add.sprite(700, 400, 'slime').setDepth(5).setScale(0.07)
+        // slime2 = this.physics.add.sprite(600, 400, 'slime').setDepth(6).setScale(0.07);   
         slime = this.physics.add.Group().setDepth(5).setScale(0.07);
         slime.create(700, 400, 'slime');
         slime.create(600, 200, 'slime');
@@ -90,7 +89,7 @@ class GameScene extends Phaser.Scene {
            callback: function () {
               slime = this.physics.add.image(350, 100, 'slime');
                objGroup.add(slime);
-               objGroup.setVelocityY(200);
+               objGroup.setVelocityX(200);
                this.physics.add.collider(ninja, slime, ()=>{
                   this.scene.start('LoseScene');
               });
@@ -118,16 +117,14 @@ class GameScene extends Phaser.Scene {
     });
 
       //เสียง
-         music1 = this.sound.add('music1').setVolume(0.2);
-         music1.play({loop: true});
+        //  music1 = this.sound.add('music1').setVolume(0.2);
+        //  music1.play({loop: true});
  
         //เปลี่ยนsceneจบ
         this.physics.add.collider(ninja, slime, ()=>{
                 this.scene.start('LoseScene');
             });
-        // this.physics.add.collider(ninja, slime2, ()=>{
-        //         this.scene.start('LoseScene');
-            // });
+
         this.physics.add.collider(ninja, home, ()=>{
             this.scene.start('WinScene');
         });
@@ -166,6 +163,13 @@ class GameScene extends Phaser.Scene {
         ninja.anims.play('ninjaAni-right', true);
         slime.anims.play('slimeAni', true);
         // slime2.anims.play('slimeAni', true);
+        
+        for (let i = 0; i < objGroup.getChildren().length; i++) {
+            if (objGroup.getChildren()[i].x < -3500) {
+                    objGroup.getChildren()[i].destroy();
+            }
+        }
+
             
         if(true){slime.setVelocityX(100);}
         // if(true){slime2.setVelocityX(100);}   
