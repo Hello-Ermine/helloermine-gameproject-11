@@ -115,6 +115,7 @@ class GameScene extends Phaser.Scene {
         musicStart = this.sound.add('musicStart').setVolume(0.5);
         loseSound = this.sound.add('loseSound').setVolume(0.8);
         vitorySound = this.sound.add('vitorySound').setVolume(0.8);
+        musicPlay.play({loop: true});
 
 
 
