@@ -1,5 +1,9 @@
 import Phaser from "phaser";
+<<<<<<< HEAD
 let bgplay;
+=======
+let background;
+>>>>>>> main
 let ninja;
 let slime;
 let objGroup;
@@ -9,6 +13,7 @@ let keyArrowUp;
 let keyArrowLeft;
 let keyArrowDown;
 let keyArrowRight;
+let wall;
 let event;
 
 class GameScene extends Phaser.Scene {
@@ -19,6 +24,7 @@ class GameScene extends Phaser.Scene {
     }
 
     preload() {
+<<<<<<< HEAD
         this.load.image('bgplay', 'src/image/Bg-play.png');
         this.load.spritesheet('ninja', 'src/image/ninja.png', { frameWidth: 428.5, frameHeight: 669 });
         this.load.spritesheet('slime', 'src/imge/Slime.png', { frameWidth: 1527.5, frameHeight: 3817 });
@@ -28,6 +34,21 @@ class GameScene extends Phaser.Scene {
         background = this.add.tileSprite(0,0,1920,1080,'bgplay').setOrigin(0, 0).setDepth(1).setScale(0.87);
         
         ninja = this.physics.add.sprite(2143, 3817, 'ninja').setScale(0.5).setDepth(3);
+=======
+        this.load.image('bg-play', 'src/image/Bg-play.png')
+        this.load.spritesheet('ninja', 'src/image/ninja.png', { frameWidth: 428.5, frameHeight: 669});
+        this.load.spritesheet('slime', 'src/image/Slime.png', { frameWidth: 1269.5, frameHeight: 906 });
+    }
+
+    create() {
+
+        background = this.add.tileSprite(0,0,1920,1080,'bg-play').setOrigin(0, 0).setDepth(1).setScale(0.87);
+        wall = this.add.image(0,-300,'bg-play').setOrigin(0, 0).setDepth(2).setScale(0.87).setVisible(false);
+
+
+        ninja = this.physics.add.sprite(200, 400, 'ninja').setDepth(5).setScale(0.15);
+        slime = this.physics.add.sprite(700, 400, 'slime').setDepth(5).setScale(0.07);
+>>>>>>> main
 
         //ninja animation
         this.anims.create({
@@ -52,7 +73,7 @@ class GameScene extends Phaser.Scene {
             repeat: -1
         })
 
-        //slime animetion
+        //slime animation
         this.anims.create({
             key: 'slimeAni',
             frames: this.anims.generateFrameNumbers('slime', {
@@ -60,6 +81,7 @@ class GameScene extends Phaser.Scene {
                 end: 1
             }),
             duration: 1000,
+            framerate: 0,
             repeat: -1
         })
 
@@ -94,8 +116,12 @@ class GameScene extends Phaser.Scene {
     }
 
     update(delta, time) {
+<<<<<<< HEAD
         bgplay.tilePositionX -= 10;
         ninja.anims.play('ninjaAni', true);
+=======
+        background.tilePositionX += 3;
+>>>>>>> main
         slime.anims.play('slimeAni', true);
 
          for (let i = 0; i < objGroup.getChildren().length; i++) {
@@ -103,9 +129,6 @@ class GameScene extends Phaser.Scene {
                      objGroup.getChildren()[i].destroy();
              }
          }
-
-
-
 
         ninja.anims.play('ninjaAni-right', true);
         if (keyArrowUp.isDown) {
