@@ -36,7 +36,7 @@ class GameScene extends Phaser.Scene {
 
 
         ninja = this.physics.add.sprite(200, 400, 'ninja').setDepth(5).setScale(0.15);
-        slime = this.physics.add.staticGroup().setDepth(5).setScale(0.07);
+        slime = this.physics.add.Group().setDepth(5).setScale(0.07);
         slime.create(700, 400, 'slime');
         slime.create(600, 200, 'slime');
         slime.create(400, 500, 'slime');
