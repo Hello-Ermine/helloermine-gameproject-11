@@ -4,6 +4,7 @@ let bg;
 let play;
 let how;
 let name;
+let musicstart ;
 
 class StartScene extends Phaser.Scene {
     constructor(test) {
@@ -20,6 +21,7 @@ class StartScene extends Phaser.Scene {
         //button
         this.load.image('play', 'src/image/play.png');
         this.load.image('how', 'src/image/how to play.png');
+        this.load.sound('musicstart','src/sound/musicstart1.mp3')
     }
 
     create() {
@@ -30,6 +32,8 @@ class StartScene extends Phaser.Scene {
         name = this.add.image(525, 150, 'name')
         name.setScale(0.7).setDepth(2)
 
+        musicstart = this.sound.add('musicstart').setVolume(0.2);
+        musicstart.play({loop: true});
         //button-play
         play = this.add.image(525, 300, 'play')
             play.setScale(0.38).setDepth(5).setInteractive();

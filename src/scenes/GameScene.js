@@ -135,23 +135,21 @@ class GameScene extends Phaser.Scene {
         if(true){slime.setVelocityX(-1000);}
         if(true){home.setVelocityX(-500);}
     
-            if(keyW.isDown){
-                player.setVelocityY(-1000);
-                player.anims.play('playerAni',true);
-            }else if(keyS.isDown){
-                player.setVelocityY(1000);
-                player.anims.play('playerAni',true);
+            if(keyArrowUp.isDown){
+                ninja.setVelocityY(-1000);
+            }else if(ArrowDown.isDown){
+                ninja.setVelocityY(1000);
             }else{
-                player.setVelocityY(0);
+                ninja.setVelocityY(0);
             }
-            if(keyA.isDown){
-                player.setVelocityX(-1000);
-                player.anims.play('playerAni',true);
-            }else if(keyD.isDown){
-                player.setVelocityX(1000);
-                player.anims.play('playerAni',true);
+            if(keyArrowLeft .isDown){
+                ninja.setVelocityX(-1000);
+                ninja.anims.play('ninjaAni-right',true);
+            }else if(keyArrowRight.isDown){
+                ninja.setVelocityX(1000);
+                ninja.anims.play('ninjaAni-right',true);
             }else{
-                player.setVelocityX(0);
+                ninja.setVelocityX(0);
             }        
 
     }    
