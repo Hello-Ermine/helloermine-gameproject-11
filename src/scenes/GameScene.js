@@ -84,6 +84,8 @@ class GameScene extends Phaser.Scene {
          paused: false,
      });
 
+
+       //Win&LoseScene
          this.physics.add.collider(ninja, slime, ()=>{
             this.scene.start('LoseScene');
         });
