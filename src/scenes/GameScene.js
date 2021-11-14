@@ -48,7 +48,7 @@ class GameScene extends Phaser.Scene {
             duration: 500,
             framerate: 0,
             repeat: -1
-        })
+        });
 
         this.anims.create({
             key: 'ninjaAni-right',
@@ -59,7 +59,7 @@ class GameScene extends Phaser.Scene {
             duration: 500,
             framerate: 0,
             repeat: -1
-        })
+        });
 
         //slime animation
         this.anims.create({
@@ -71,7 +71,7 @@ class GameScene extends Phaser.Scene {
             duration: 1000,
             framerate: 0,
             repeat: -1
-        })
+        });
 
         //obj slime
          objGroup = this.physics.add.group();    
@@ -145,10 +145,10 @@ class GameScene extends Phaser.Scene {
         }
         if (keyArrowLeft.isDown) {
             ninja.setVelocityX(-500);
-            ninja.anims.play('ninjaAni-left', true,)
+            ninja.anims.play('ninjaAni-left', true);
         } else if (keyArrowRight.isDown) {
             ninja.setVelocityX(500);
-            ninja.anims.play('ninjaAni-right', true,)
+            ninja.anims.play('ninjaAni-right', true);
         } else {
             ninja.setVelocityX(0);
         }
