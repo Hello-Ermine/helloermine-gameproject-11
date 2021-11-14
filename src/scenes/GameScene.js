@@ -10,6 +10,11 @@ let wall;
 let event;
 let objGroup;
 let home;
+//music
+let musicPlay;
+let musicStart;
+let loseSound;
+let vitorySound;
 
 class GameScene extends Phaser.Scene {
     constructor(test) {
@@ -19,10 +24,15 @@ class GameScene extends Phaser.Scene {
     }
 
     preload() {
-        this.load.image('bg-play', 'src/image/Bg-play.png')
-        this.load.image('home', 'src/image/home.png')
+        this.load.image('bg-play', 'src/image/Bg-play.png');
+        this.load.image('home', 'src/image/home.png');
         this.load.spritesheet('ninja', 'src/image/ninja.png', { frameWidth: 428.5, frameHeight: 669});
         this.load.spritesheet('slime', 'src/image/Slime.png', { frameWidth: 1269.5, frameHeight: 906 });
+        //music
+        this.load.audio('musicPlay', 'src/sound/musicplay.wav');
+        this.load.audio('musicStart', 'src/sound/musicstart1.mp3');
+        this.load.audio('loseSound', 'src/sound/nope.mp3');
+        this.load.audio('vitorySound', 'src/sound/victory-music-video-game-sound-effect.mp3');
     }
 
     create() {
@@ -97,6 +107,14 @@ class GameScene extends Phaser.Scene {
         //  this.physics.add.collider(ninja, home, ()=>{
         //     this.scene.start('WinScene');
         // });
+
+
+
+        //music
+        musicPlay = this.sound.add('musicPlay').setVolume(0.5);
+        musicStart = this.sound.add('musicStart').setVolume(0.5);
+        loseSound = this.sound.add('loseSound').setVolume(0.8);
+        vitorySound = this.sound.add('vitorySound').setVolume(0.8);
 
 
 
