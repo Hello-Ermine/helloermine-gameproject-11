@@ -31,6 +31,7 @@ class GameScene extends Phaser.Scene {
         this.load.image('exit', 'src/image/exit.png');
 
         this.load.sound('music1','src/sound/musicplay.wav');
+      
     }
 
     create() {
@@ -82,20 +83,25 @@ class GameScene extends Phaser.Scene {
             repeat: -1
         })
 
-        objninja = this.physics.add.image(2143, 3817, 'ninja').setImmovable();
-         objGroup = this.physics.add.group();    
-          event = this.time.addEvent({
-                delay: 5000,
-                callback: function () {
-            objslime = this.physics.add.image(1527.5, 100, 'slime');
-            objGroup.add(slime);
-            objGroup.setVelocityY(200);
-        this.physics.add.collider(slime, ninja);
-          },
-        callbackScope: this,
-         loop: true,
-    //paused: false,
-     });
+           //obj slime
+           objGroup = this.physics.add.group();  
+           event = this.time.addEvent({
+           delay: 5000,
+           callback: function () {
+              slime = this.physics.add.image(350, 100, 'slime');
+               objGroup.add(slime);
+               objGroup.setVelocityY(200);
+               this.physics.add.collider(ninja, slime, ()=>{
+                  this.scene.start('LoseScene');
+              });
+              this.physics.add.collider(ninja, home, ()=>{
+                  this.scene.start('WinScene');
+              });
+           },
+           callbackScope: this,
+           loop: true,
+           //paused: false,
+       });
     
     //exit 
     exit = this.add.image(930, 550, 'exit');
