@@ -149,8 +149,8 @@ class GameScene extends Phaser.Scene {
         ninja.anims.play('ninjaAni-right', true);
         slime.anims.play('slimeAni', true);
             
-        if(true){slime.setVelocityX(10);}
-        if(true){home.setVelocityX(-100);}
+        if(true){slime.setVelocityX(100);}
+        if(true){home.setVelocityX(-200);}
     
             if(keyArrowUp.isDown){
                 ninja.setVelocityY(-1000);
