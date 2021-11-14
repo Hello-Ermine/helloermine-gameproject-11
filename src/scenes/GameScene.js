@@ -75,20 +75,20 @@ class GameScene extends Phaser.Scene {
             repeat: -1
         })
 
-        objninja = this.physics.add.image(2143, 3817, 'ninja').setImmovable();
-         objGroup = this.physics.add.group();    
-         event = this.time.addEvent({
-         delay: 5000,
-         callback: function () {
-             objslime = this.physics.add.image(1527.5, 100, 'slime');
-             objGroup.add(slime);
-            objGroup.setVelocityY(200);
-             this.physics.add.collider(slime, ninja);
-         },
-         callbackScope: this,
-         loop: true,
-       //paused: false,
-     });
+    //     objninja = this.physics.add.image(2143, 3817, 'ninja').setImmovable();
+    //      objGroup = this.physics.add.group();    
+    //      event = this.time.addEvent({
+    //      delay: 5000,
+    //      callback: function () {
+    //          objslime = this.physics.add.image(1527.5, 100, 'slime');
+    //          objGroup.add(slime);
+    //         objGroup.setVelocityY(200);
+    //          this.physics.add.collider(slime, ninja);
+    //      },
+    //      callbackScope: this,
+    //      loop: true,
+    //    //paused: false,
+    //  });
     
     //exit 
     exit = this.add.image(930, 550, 'exit')
