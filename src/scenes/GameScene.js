@@ -12,9 +12,6 @@ let objGroup;
 let home;
 //music
 let musicPlay;
-let musicStart;
-let loseSound;
-let vitorySound;
 
 class GameScene extends Phaser.Scene {
     constructor(test) {
@@ -30,9 +27,6 @@ class GameScene extends Phaser.Scene {
         this.load.spritesheet('slime', 'src/image/Slime.png', { frameWidth: 1269.5, frameHeight: 906 });
         //music
         this.load.audio('musicPlay', 'src/sound/musicplay.wav');
-        this.load.audio('musicStart', 'src/sound/musicstart1.mp3');
-        this.load.audio('loseSound', 'src/sound/nope.mp3');
-        this.load.audio('vitorySound', 'src/sound/victory-music-video-game-sound-effect.mp3');
     }
 
     create() {
@@ -112,9 +106,6 @@ class GameScene extends Phaser.Scene {
 
         //music
         musicPlay = this.sound.add('musicPlay').setVolume(0.5);
-        musicStart = this.sound.add('musicStart').setVolume(0.5);
-        loseSound = this.sound.add('loseSound').setVolume(0.8);
-        vitorySound = this.sound.add('vitorySound').setVolume(0.8);
         musicPlay.play({loop: true});
 
 
@@ -133,7 +124,7 @@ class GameScene extends Phaser.Scene {
     }
 
     update(delta, time) {
-        background.tilePositionX += 3;
+        background.tilePositionX -= 3;
         slime.anims.play('slimeAni', true);
         if(true){home.setVelocityX(-100);}
         if(true){slime.setVelocityX(10);}
