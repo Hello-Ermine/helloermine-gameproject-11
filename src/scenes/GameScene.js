@@ -4,13 +4,14 @@ let ninja;
 let slime;
 let home;
 let music1;
- let keyArrowUp;
+let keyArrowUp;
 let keyArrowLeft;
 let keyArrowDown;
 let keyArrowRight;
 //let cursor;
 let wall;
 //let event;
+let exit;
 
 
 class GameScene extends Phaser.Scene {
@@ -25,8 +26,9 @@ class GameScene extends Phaser.Scene {
         this.load.spritesheet('ninja', 'src/image/ninja.png', { frameWidth: 428.5, frameHeight: 669});
         this.load.spritesheet('slime', 'src/image/Slime.png', { frameWidth: 1269.5, frameHeight: 906 });
         this.load.image('home', 'src/image/home.png')
+        this.load.image('exit', 'src/image/exit.png');
 
-        this.load.sound('music1','src/sound/musicplay.wav')
+        // this.load.sound('music1','src/sound/musicplay.wav')
     }
 
     create() {
@@ -35,7 +37,7 @@ class GameScene extends Phaser.Scene {
         wall = this.add.image(0,-300,'bg-play').setOrigin(0, 0).setDepth(2).setScale(0.87).setVisible(false);
         ninja = this.physics.add.sprite(200, 400, 'ninja').setDepth(5).setScale(0.15).setImmovable().setCollideWorldBounds(true);
         slime = this.physics.add.sprite(700, 400, 'slime').setDepth(5).setScale(0.07);
-        home = this.physics.add.image(3000,350,'home').setDepth(17).setScale(2.5).setOffset(0,-40);
+        home = this.physics.add.image(5000,350,'home').setDepth(7).setScale(1).setOffset(0,-40);
        
         //ninja animation
         this.anims.create({
@@ -86,10 +88,24 @@ class GameScene extends Phaser.Scene {
         // loop: true,
         // //paused: false,
     // });
+    
+    //exit 
+    exit = this.add.image(950, 700, 'exit')
+    exit.setScale(0.35).setDepth(2).setInteractive();
+
+    exit.on('pointerup', () => {
+        this.scene.start('StartScene');
+    })
+    exit.on('pointerover', () => {
+        exit.setScale(0.38);
+    })
+    exit.on('pointerout', () => {
+        exit.setScale(0.35);
+    })
 
       //เสียง
-        music1 = this.sound.add('music1').setVolume(0.2);
-        music1.play({loop: true});
+        // music1 = this.sound.add('music1').setVolume(0.2);
+        // music1.play({loop: true});
  
         //เปลี่ยนsceneจบ
         this.physics.add.collider(ninja, slime, ()=>{
@@ -106,7 +122,7 @@ class GameScene extends Phaser.Scene {
 
 
         //key input
-         keyArrowUp = this.input.keyboard.addKey(ArrowUp);
+         keyArrowUp = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ArrowUp);
          keyArrowLeft = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ArrowLeft);
          keyArrowDown = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ArrowDown);
          keyArrowRight = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ArrowRight);
@@ -129,15 +145,16 @@ class GameScene extends Phaser.Scene {
         
         update(delta, time) {
 
-        bg.tilePositionX += 2;
+        background.tilePositionX += 2;
         ninja.anims.play('ninjaAni-right', true);
+        slime.anims.play('slimeAni', true);
             
-        if(true){slime.setVelocityX(-1000);}
-        if(true){home.setVelocityX(-500);}
+        if(true){slime.setVelocityX(10);}
+        if(true){home.setVelocityX(-100);}
     
             if(keyArrowUp.isDown){
                 ninja.setVelocityY(-1000);
-            }else if(ArrowDown.isDown){
+            }else if(keyArrowDown.isDown){
                 ninja.setVelocityY(1000);
             }else{
                 ninja.setVelocityY(0);
