@@ -90,7 +90,7 @@ class GameScene extends Phaser.Scene {
     // });
     
     //exit 
-    exit = this.add.image(950, 700, 'exit')
+    exit = this.add.image(930, 550, 'exit')
     exit.setScale(0.35).setDepth(2).setInteractive();
 
     exit.on('pointerup', () => {
