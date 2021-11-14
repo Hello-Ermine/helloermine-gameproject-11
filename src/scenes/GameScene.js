@@ -9,6 +9,7 @@ let keyArrowRight;
 let wall;
 let event;
 let objGroup;
+let home;
 
 class GameScene extends Phaser.Scene {
     constructor(test) {
@@ -19,6 +20,7 @@ class GameScene extends Phaser.Scene {
 
     preload() {
         this.load.image('bg-play', 'src/image/Bg-play.png')
+        this.load.image('home', 'src/image/home.png')
         this.load.spritesheet('ninja', 'src/image/ninja.png', { frameWidth: 428.5, frameHeight: 669});
         this.load.spritesheet('slime', 'src/image/Slime.png', { frameWidth: 1269.5, frameHeight: 906 });
     }
