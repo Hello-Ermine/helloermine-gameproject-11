@@ -38,7 +38,11 @@ class GameScene extends Phaser.Scene {
         wall = this.add.image(0,-300,'bg-play').setOrigin(0, 0).setDepth(2).setScale(0.87).setVisible(false);
         ninja = this.physics.add.sprite(200, 400, 'ninja').setDepth(5).setScale(0.15).setImmovable().setCollideWorldBounds(true);
         home = this.physics.add.image(5000,350,'home').setDepth(7).setScale(1).setOffset(0,-40);
-        slime = this.physics.add.sprite(700, 400, 'slime').setDepth(5).setScale(0.07);
+           //slime = this.physics.add.sprite(700, 400, 'slime').setDepth(5).setScale(0.07);
+        slime = this.physics.add.Group().setDepth(5).setScale(0.07);
+        slime.create(700, 400, 'slime');
+        slime.create(600, 200, 'slime');
+        slime.create(400, 500, 'slime');
        
         //ninja animation
         this.anims.create({
@@ -75,20 +79,20 @@ class GameScene extends Phaser.Scene {
             repeat: -1
         });
 
-    //     objninja = this.physics.add.image(2143, 3817, 'ninja').setImmovable();
-    //      objGroup = this.physics.add.group();    
-    //      event = this.time.addEvent({
-    //      delay: 5000,
-    //      callback: function () {
-    //          objslime = this.physics.add.image(1527.5, 100, 'slime');
-    //          objGroup.add(slime);
-    //         objGroup.setVelocityY(200);
-    //          this.physics.add.collider(slime, ninja);
-    //      },
-    //      callbackScope: this,
-    //      loop: true,
-    //    //paused: false,
-    //  });
+         objninja = this.physics.add.image(2143, 3817, 'ninja').setImmovable();
+          objGroup = this.physics.add.group();    
+          event = this.time.addEvent({
+          delay: 5000,
+          callback: function () {
+              objslime = this.physics.add.image(1527.5, 100, 'slime');
+              objGroup.add(slime);
+             objGroup.setVelocityY(200);
+              this.physics.add.collider(slime, ninja);
+          },
+          callbackScope: this,
+          loop: true,
+        //paused: false,
+      });
     
     //exit 
     exit = this.add.image(930, 550, 'exit');
@@ -168,7 +172,13 @@ class GameScene extends Phaser.Scene {
                 ninja.anims.play('ninjaAni-right',true);
             }else{
                 ninja.setVelocityX(0);
-            }        
+            }    
+        // destroy slime   
+         for (let i = 0; i < objGroup.getChildren().length; i++) {
+             if (objGroup.getChildren()[i].x < -1200) {
+                     objGroup.getChildren()[i].destroy();
+             }
+         }    
 
     }    
 }
