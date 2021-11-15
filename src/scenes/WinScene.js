@@ -2,6 +2,7 @@ import Phaser from "phaser";
 
 let exit;
 let bg;
+let music;
 class WinScene extends Phaser.Scene {
     constructor(test) {
         super({
@@ -13,6 +14,7 @@ class WinScene extends Phaser.Scene {
         //button
         this.load.image('bgwin', 'src/image/win.png');
         this.load.image('exit', 'src/image/exit.png');
+        this.load.audio('music','src/sound/win.mp3')
     }
 
     create() {
@@ -25,6 +27,7 @@ class WinScene extends Phaser.Scene {
 
         exit.on('pointerup', () => {
             this.scene.start('StartScene');
+            music.stop()
         })
         exit.on('pointerover', () => {
             exit.setScale(0.38);
@@ -32,6 +35,9 @@ class WinScene extends Phaser.Scene {
         exit.on('pointerout', () => {
             exit.setScale(0.35);
         })
+
+        music = this.sound.add('music').setVolume(0.18);
+        music.play({loop: true});
 
     }
 

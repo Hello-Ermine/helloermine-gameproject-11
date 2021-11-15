@@ -30,7 +30,7 @@ class GameScene extends Phaser.Scene {
         this.load.spritesheet('ninja', 'src/image/ninja.png', { frameWidth: 428.5, frameHeight: 669});
         this.load.spritesheet('slime', 'src/image/Slime.png', { frameWidth: 1269.5, frameHeight: 906 });
         this.load.image('home', 'src/image/home.png')
-        this.load.image('exit', 'src/image/exit.png');
+        this.load.image('exit', 'src/image/exit.png')
 
          this.load.audio('music1','src/sound/musicplay.wav')
     }
@@ -38,11 +38,12 @@ class GameScene extends Phaser.Scene {
     create() {
 
         background = this.add.tileSprite(0,0,1920,1080,'bg-play').setOrigin(0, 0).setDepth(1).setScale(0.87);
-        wall = this.add.image(0,-300,'bg-play').setOrigin(0, 0).setDepth(2).setScale(0.87).setVisible(false);
-        ninja = this.physics.add.sprite(200, 400, 'ninja').setDepth(5).setScale(0.15).setImmovable().setCollideWorldBounds(true);
+        wall = this.physics.add.image(0,-300,'bg-play').setOrigin(0, 0).setDepth(8).setScale(0.87).setVisible(false);
+        wall.setImmovable().setOffset(250,250);
+        ninja = this.physics.add.sprite(200, 400, 'ninja').setDepth(5).setScale(0.15).setCollideWorldBounds(true);
         slime = this.physics.add.sprite(700, 400, 'slime').setDepth(5).setScale(0.07);
         home = this.physics.add.image(5000,350,'home').setDepth(7).setScale(1).setOffset(0,-40);
-       
+       this.physics.add.collider(ninja,wall);
         //ninja animation
         this.anims.create({
             key: 'ninjaAni-left',
@@ -108,15 +109,17 @@ class GameScene extends Phaser.Scene {
     })
 
       //เสียง
-        //  music1 = this.audio.add('music1').setVolume(0.2);
-        // music1.play({loop: true});
+          music1 = this.sound.add('music1').setVolume(0.18);
+         music1.play({loop: true});
  
         //เปลี่ยนsceneจบ
         this.physics.add.collider(ninja, slime, ()=>{
                 this.scene.start('LoseScene');
+                // music1.Destroy();
             });
         this.physics.add.collider(ninja, home, ()=>{
             this.scene.start('WinScene');
+            music1.stop();
         });
 
 
@@ -153,6 +156,8 @@ class GameScene extends Phaser.Scene {
         background.tilePositionX += 2;
         ninja.anims.play('ninjaAni-right', true);
         slime.anims.play('slimeAni', true);
+
+        
             
         if(true){slime.setVelocityX(100);}
         if(true){home.setVelocityX(-200);}
