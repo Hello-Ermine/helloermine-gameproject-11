@@ -4,14 +4,18 @@ let ninja;
 let slime;
 let home;
 let music1;
-let keyArrowUp;
-let keyArrowLeft;
-let keyArrowDown;
-let keyArrowRight;
+// let keyArrowUp;
+// let keyArrowLeft;
+// let keyArrowDown;
+// let keyArrowRight;
 //let cursor;
 let wall;
 //let event;
 let exit;
+let keyW;
+let keyA;
+let keyS;
+let keyD;
 
 
 class GameScene extends Phaser.Scene {
@@ -28,7 +32,7 @@ class GameScene extends Phaser.Scene {
         this.load.image('home', 'src/image/home.png')
         this.load.image('exit', 'src/image/exit.png');
 
-        // this.load.sound('music1','src/sound/musicplay.wav')
+         this.load.audio('music1','src/sound/musicplay.wav')
     }
 
     create() {
@@ -104,8 +108,8 @@ class GameScene extends Phaser.Scene {
     })
 
       //เสียง
-        // music1 = this.sound.add('music1').setVolume(0.2);
-        // music1.play({loop: true});
+         music1 = this.audio.add('music1').setVolume(0.2);
+        music1.play({loop: true});
  
         //เปลี่ยนsceneจบ
         this.physics.add.collider(ninja, slime, ()=>{
@@ -122,10 +126,14 @@ class GameScene extends Phaser.Scene {
 
 
         //key input
-         keyArrowUp = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ArrowUp);
-         keyArrowLeft = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ArrowLeft);
-         keyArrowDown = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ArrowDown);
-         keyArrowRight = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ArrowRight);
+        //  keyArrowUp = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ArrowUp);
+        //  keyArrowLeft = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ArrowLeft);
+        //  keyArrowDown = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ArrowDown);
+        //  keyArrowRight = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ArrowRight);
+        keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
+    keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
+    keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
+    keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
         
         
       
@@ -152,22 +160,38 @@ class GameScene extends Phaser.Scene {
         if(true){slime.setVelocityX(100);}
         if(true){home.setVelocityX(-200);}
     
-            if(keyArrowUp.isDown){
-                ninja.setVelocityY(-1000);
-            }else if(keyArrowDown.isDown){
-                ninja.setVelocityY(1000);
+            // if(keyArrowUp.isDown){
+            //     ninja.setVelocityY(-1000);
+            // }else if(keyArrowDown.isDown){
+            //     ninja.setVelocityY(1000);
+            // }else{
+            //     ninja.setVelocityY(0);
+            // }
+            // if(keyArrowLeft .isDown){
+            //     ninja.setVelocityX(-1000);
+            //     ninja.anims.play('ninjaAni-right',true);
+            // }else if(keyArrowRight.isDown){
+            //     ninja.setVelocityX(1000);
+            //     ninja.anims.play('ninjaAni-right',true);
+            // }else{
+            //     ninja.setVelocityX(0);
+            // }   
+            if(keyW.isDown){
+                player.setVelocityY(-500);
+            }else if(keyS.isDown){
+                player.setVelocityY(500);
             }else{
-                ninja.setVelocityY(0);
+                player.setVelocityY(0);
             }
-            if(keyArrowLeft .isDown){
-                ninja.setVelocityX(-1000);
-                ninja.anims.play('ninjaAni-right',true);
-            }else if(keyArrowRight.isDown){
-                ninja.setVelocityX(1000);
+            if(keyA.isDown){
+                player.setVelocityX(-500);
+                ninja.anims.play('ninjaAni-left',true);
+            }else if(keyD.isDown){
+                player.setVelocityX(500);
                 ninja.anims.play('ninjaAni-right',true);
             }else{
-                ninja.setVelocityX(0);
-            }        
+                player.setVelocityX(0);
+            }     
 
     }    
 }
