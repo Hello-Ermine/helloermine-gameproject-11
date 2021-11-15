@@ -2,10 +2,11 @@ import Phaser from "phaser";
 
 let exit;
 let bg;
+let musicstart ;
 class HowScene extends Phaser.Scene {
     constructor(test) {
         super({
-            key: 'HowScene '
+            key: 'HowScene'
         });
     }
 
@@ -13,6 +14,7 @@ class HowScene extends Phaser.Scene {
         //button
         this.load.image('bghow', 'src/image/How to play.jpeg');
         this.load.image('exit', 'src/image/exit.png');
+        this.load.audio('musicstart','src/sound/musicstart1.mp3');
     }
 
     create() {
@@ -33,10 +35,13 @@ class HowScene extends Phaser.Scene {
             exit.setScale(0.35);
         })
 
+        musicstart = this.add.audio('musicstart').setVolume(0.2);
+        
+
     }
 
     update() {
-       
+    musicstart.play({loop: true});   
     }
 }
 
