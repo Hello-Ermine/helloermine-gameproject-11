@@ -2,7 +2,7 @@ import Phaser from "phaser";
 
 let exit;
 let bg;
-let music;
+let musicl;
 class LoseScene extends Phaser.Scene {
     constructor(test) {
         super({
@@ -34,8 +34,8 @@ class LoseScene extends Phaser.Scene {
         exit.on('pointerout', () => {
             exit.setScale(0.35);
         })
-        music = this.sound.add('music').setVolume(0.18);
-         music.play({loop: false});
+        musicl = this.sound.add('music').setVolume(0.18);
+         musicl.play({loop: false});
     }
     
 

@@ -100,6 +100,7 @@ class GameScene extends Phaser.Scene {
 
     exit.on('pointerup', () => {
         this.scene.start('StartScene');
+        music1.stop();
     })
     exit.on('pointerover', () => {
         exit.setScale(0.38);
@@ -115,7 +116,7 @@ class GameScene extends Phaser.Scene {
         //เปลี่ยนsceneจบ
         this.physics.add.collider(ninja, slime, ()=>{
                 this.scene.start('LoseScene');
-                // music1.Destroy();
+                music1.stop();
             });
         this.physics.add.collider(ninja, home, ()=>{
             this.scene.start('WinScene');

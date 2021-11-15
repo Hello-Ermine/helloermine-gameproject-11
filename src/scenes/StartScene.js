@@ -56,6 +56,7 @@ class StartScene extends Phaser.Scene {
         
         how.on('pointerup', () => {
             this.scene.start('HowScene');
+            musicstart1.stop();
         })
         how.on('pointerover', () => {
             how.setScale(0.56);
