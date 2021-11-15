@@ -14,7 +14,7 @@ let wall;
 let event;
 let exit;
 let objninja;
-
+let objsilme;
 
 class GameScene extends Phaser.Scene {
     constructor(test) {
@@ -83,13 +83,12 @@ class GameScene extends Phaser.Scene {
         })
 
            //obj slime
-           objGroup = this.physics.add.group();  
+           objsilme = this.physics.add.group();  
            event = this.time.addEvent({
            delay: 5000,
            callback: function () {
               slime = this.physics.add.image(Phaser.Math.Between(350, 100), 'slime')
-               objGroup.add(slime);
-               objGroup.setVelocityX(200);
+               objsilme.add(slime).setVelocityX(200);
                this.physics.add.collider(ninja, slime, ()=>{
                   this.scene.start('LoseScene');
               });
