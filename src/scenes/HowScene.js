@@ -5,7 +5,7 @@ let bg;
 class HowScene extends Phaser.Scene {
     constructor(test) {
         super({
-            key: 'HowScene '
+            key: 'HowScene'
         });
     }
 
