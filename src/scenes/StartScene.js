@@ -21,7 +21,7 @@ class StartScene extends Phaser.Scene {
         //button
         this.load.image('play', 'src/image/play.png');
         this.load.image('how', 'src/image/how to play.png');
-        this.load.audio('musicstart','src/sound/musicstart1.mp3');
+        //this.load.audio('musicstart','src/sound/musicstart1.mp3');
     }
 
     create() {
