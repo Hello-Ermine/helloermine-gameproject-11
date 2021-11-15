@@ -89,12 +89,12 @@ class GameScene extends Phaser.Scene {
            callback: function () {
               slime = this.physics.add.image(Phaser.Math.Between(350, 100), 'slime')
                objsilme.add(slime).setVelocityX(200);
-               this.physics.add.collider(ninja, slime, ()=>{
-                  this.scene.start('LoseScene');
-              });
-              this.physics.add.collider(ninja, home, ()=>{
-                  this.scene.start('WinScene');
-              });
+            //    this.physics.add.collider(ninja, slime, ()=>{
+            //       this.scene.start('LoseScene');
+            //   });
+            //   this.physics.add.collider(ninja, home, ()=>{
+            //       this.scene.start('WinScene');
+            //   });
            },
            callbackScope: this,
            loop: true,
