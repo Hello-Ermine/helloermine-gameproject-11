@@ -23,8 +23,8 @@ class GameScene extends Phaser.Scene {
     }
 
     preload() {
-        this.load.image('bg-play', 'src/image/Bg-play.png');
-        this.load.spritesheet('ninja', 'src/image/ninja.png', { frameWidth: 428.5, frameHeight: 669});
+        this.load.image('bg-play', 'src/image/Bg-play.jpg');
+        this.load.spritesheet('ninja', 'src/image/ninja.jpg', { frameWidth: 428.5, frameHeight: 669});
         this.load.spritesheet('slime', 'src/image/Slime.png', { frameWidth: 1269.5, frameHeight: 906 });
         this.load.image('home', 'src/image/home.png');
         this.load.image('exit', 'src/image/exit.png');
@@ -39,7 +39,7 @@ class GameScene extends Phaser.Scene {
         wall = this.add.image(0,-300,'bg-play').setOrigin(0, 0).setDepth(2).setScale(0.87).setVisible(false);
         ninja = this.physics.add.sprite(200, 400, 'ninja').setDepth(5).setScale(0.15).setImmovable().setCollideWorldBounds(true);
         home = this.physics.add.image(5000,350,'home').setDepth(7).setScale(1).setOffset(0,-40);
-        slime = this.physics.add.sprite(700, 400, 'slime').setDepth(5).setScale(0.07)
+         slime = this.physics.add.sprite(700, 400, 'slime').setDepth(5).setScale(0.07)
         // slime2 = this.physics.add.sprite(600, 400, 'slime').setDepth(6).setScale(0.07);   
         // slime = this.physics.add.Group().setDepth(5).setScale(0.07);
         // slime.create(700, 400, 'slime');
@@ -86,9 +86,9 @@ class GameScene extends Phaser.Scene {
            slimeevent = this.time.addEvent({
            delay: 500,
            callback: function () {
-              slime = this.physics.add.sprite(Phaser.Math.Between(350, 100),0, 'slime');
-              slime.setVelocityX(300).setDepth(5).setScale(0.07);
-              objslime.add(slime).setVelocityY(200);
+              slime = this.physics.add.sprite(Phaser.Math.Between(0, 500),300, 'slime');
+              slime.setVelocityY(-100).setDepth(5).setScale(0.07);
+              objslime.add(slime).setVelocityY(-100,-100);
                     this.physics.add.collider(ninja, slime, ()=>{
                         this.scene.start('LoseScene');
                     });
