@@ -24,7 +24,7 @@ class GameScene extends Phaser.Scene {
 
     preload() {
         this.load.image('bg-play', 'src/image/Bg-play.jpg');
-        this.load.spritesheet('ninja', 'src/image/ninja.jpg', { frameWidth: 428.5, frameHeight: 669});
+        this.load.spritesheet('ninja', 'src/image/ninja.png', { frameWidth: 428.5, frameHeight: 669});
         this.load.spritesheet('slime', 'src/image/Slime.png', { frameWidth: 1269.5, frameHeight: 906 });
         this.load.image('home', 'src/image/home.png');
         this.load.image('exit', 'src/image/exit.png');
