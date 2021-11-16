@@ -14,11 +14,7 @@ class HowScene extends Phaser.Scene {
         //button
         this.load.image('bghow', 'src/image/How to play.jpeg');
         this.load.image('exit', 'src/image/exit.png');
-<<<<<<< HEAD
         this.load.audio('musicstart','src/sound/musicstart1.mp3');
-=======
-        this.load.audio('musicstart','src/sound/musicstart1.mp3')
->>>>>>> Ni
     }
 
     create() {
@@ -40,18 +36,13 @@ class HowScene extends Phaser.Scene {
             exit.setScale(0.35);
         })
 
-<<<<<<< HEAD
         musicstart = this.add.audio('musicstart').setVolume(0.2);
-        
-=======
-        musicstart = this.sound.add('musicstart').setVolume(0.2);
         musicstart.play({loop: true});
->>>>>>> Ni
 
     }
 
     update() {
-    musicstart.play({loop: true});   
+       
     }
 }
 
