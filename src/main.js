@@ -21,7 +21,7 @@ const config = {
         }
     },
     scene: [
-         StartScene,
+         //StartScene,
          GameScene,
          HowScene,
         LoseScene,

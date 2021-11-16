@@ -36,16 +36,11 @@ class GameScene extends Phaser.Scene {
     create() {
 
         background = this.add.tileSprite(0,0,1920,1080,'bg-play').setOrigin(0, 0).setDepth(1).setScale(0.87);
-        wall = this.add.image(0,-300,'bg-play').setOrigin(0, 0).setDepth(2).setScale(0.87).setVisible(false);
+        wall = this.add.image(0,-300,'bg-play').setOrigin(0, 0).setDepth(2).setScale(0.87).setVisible(true);
         ninja = this.physics.add.sprite(200, 400, 'ninja').setDepth(5).setScale(0.15).setImmovable().setCollideWorldBounds(true);
         home = this.physics.add.image(5000,350,'home').setDepth(7).setScale(1).setOffset(0,-40);
          slime = this.physics.add.sprite(700, 400, 'slime').setDepth(5).setScale(0.07)
-        // slime2 = this.physics.add.sprite(600, 400, 'slime').setDepth(6).setScale(0.07);   
-        // slime = this.physics.add.Group().setDepth(5).setScale(0.07);
-        // slime.create(700, 400, 'slime');
-        // slime.create(600, 200, 'slime');
-        // slime.create(400, 500, 'slime');
-       
+        
         //ninja animation
         this.anims.create({
             key: 'ninjaAni-left',
@@ -84,11 +79,11 @@ class GameScene extends Phaser.Scene {
            //obj slime
            objslime = this.physics.add.group();  
            slimeevent = this.time.addEvent({
-           delay: 500,
+           delay: 3000,
            callback: function () {
-              slime = this.physics.add.sprite(Phaser.Math.Between(0, 500),300, 'slime');
-              slime.setVelocityY(-100).setDepth(5).setScale(0.07);
-              objslime.add(slime).setVelocityY(-100,-100);
+              slime = this.physics.add.sprite(Phaser.Math.Between(700,400),600, 'slime');
+              slime.setVelocityX(100).setDepth(5).setScale(0.07);
+              objslime.add(slime).setVelocityX(0);
                     this.physics.add.collider(ninja, slime, ()=>{
                         this.scene.start('LoseScene');
                     });
@@ -146,7 +141,7 @@ class GameScene extends Phaser.Scene {
         ninja.anims.play('ninjaAni-right', true);
         slime.anims.play('slimeAni', true);
       
-        if(true){slime.setVelocityX(100);}
+        if(true){slime.setVelocityX(-100);}
         
         if(true){home.setVelocityX(-100);}
     
