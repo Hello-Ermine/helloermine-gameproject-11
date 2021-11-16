@@ -23,8 +23,8 @@ class StartScene extends Phaser.Scene {
         //button
         this.load.image('play', 'src/image/play.png');
         this.load.image('how', 'src/image/how to play.png');
-        this.load.image('cloud1', 'src/image/Cloud1.png');
-        this.load.image('cloud2', 'src/image/Cloud2.png');
+        // this.load.image('cloud1', 'src/image/Cloud1.png');
+        // this.load.image('cloud2', 'src/image/Cloud2.png');
         this.load.audio('musicstart','src/sound/musicstart1.mp3')
     }
 
@@ -36,11 +36,11 @@ class StartScene extends Phaser.Scene {
         name = this.add.image(525, 150, 'name');
         name.setScale(0.7).setDepth(4);
 
-        cloud1 = this.add.tileSprite(0,0,600, 150, 'cloud1');
-        cloud1.setScale(0.6).setDepth(3).setOrigin(0,0);
+        // cloud1 = this.add.tileSprite(0,0,600, 150, 'cloud1');
+        // cloud1.setScale(0.6).setDepth(3).setOrigin(0,0);
 
-        cloud2 = this.add.tileSprite(0,0,800, 130, 'cloud2');
-        cloud2.setScale(1).setDepth(3).setOrigin(0,0);
+        // cloud2 = this.add.tileSprite(0,0,800, 130, 'cloud2');
+        // cloud2.setScale(1).setDepth(3).setOrigin(0,0);
         
 
         musicstart1 = this.sound.add('musicstart').setVolume(0.2);
@@ -80,8 +80,8 @@ class StartScene extends Phaser.Scene {
     }
 
     update() {
-        cloud1.tilePositionX += 1;
-        cloud2.tilePositionX -= 1;
+        // cloud1.tilePositionX += 1;
+        // cloud2.tilePositionX -= 1;
         //bg.tilePositionX += 3;
         
     }
