@@ -22,7 +22,7 @@ class HowScene extends Phaser.Scene {
         bg.setOrigin(0,0).setDepth(1).setScale(0.9);
 
 
-        exit = this.add.image(525, 530, 'exit')
+        exit = this.add.image(930, 550, 'exit')
         exit.setScale(0.35).setDepth(2).setInteractive();
 
         exit.on('pointerup', () => {

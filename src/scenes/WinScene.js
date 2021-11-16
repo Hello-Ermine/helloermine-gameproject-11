@@ -14,7 +14,8 @@ class WinScene extends Phaser.Scene {
         //button
         this.load.image('bgwin', 'src/image/win.png');
         this.load.image('exit', 'src/image/exit.png');
-        this.load.audio('music','src/sound/win.mp3')
+        this.load.audio('musicw','src/sound/win.mp3')
+        
     }
 
     create() {
@@ -36,8 +37,8 @@ class WinScene extends Phaser.Scene {
             exit.setScale(0.35);
         })
 
-        musicw = this.sound.add('music').setVolume(0.18);
-        musicw.play({loop: true});
+         musicw = this.sound.add('musicw').setVolume(0.18);
+         musicw.play({loop: true});
 
     }
 
