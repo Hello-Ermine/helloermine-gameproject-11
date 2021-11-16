@@ -27,7 +27,7 @@ class GameScene extends Phaser.Scene {
         this.load.image('home', 'src/image/home.png')
         this.load.image('exit', 'src/image/exit.png')
 
-         this.load.audio('music1','src/sound/musicplay.wav')
+         this.load.audio('music1','src/sound/musicplay.mp3')
     }
 
     create() {
@@ -105,8 +105,8 @@ class GameScene extends Phaser.Scene {
     })
 
       //เสียง
-          //music1 = this.sound.add('music1').setVolume(0.18);
-        //  music1.play({loop: true});
+          music1 = this.sound.add('music1').setVolume(0.18);
+          music1.play({loop: true});
  
         //เปลี่ยนsceneจบ
         this.physics.add.collider(ninja, slime, ()=>{
