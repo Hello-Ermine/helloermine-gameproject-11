@@ -110,8 +110,8 @@ class GameScene extends Phaser.Scene {
     })
 
       //เสียง
-          music1 = this.sound.add('music1').setVolume(0.18);
-         music1.play({loop: true});
+          //music1 = this.sound.add('music1').setVolume(0.18);
+        //  music1.play({loop: true});
  
         //เปลี่ยนsceneจบ
         this.physics.add.collider(ninja, slime, ()=>{

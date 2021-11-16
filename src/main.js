@@ -21,11 +21,11 @@ const config = {
         }
     },
     scene: [
-         StartScene,
-         GameScene,
-         HowScene,
-        LoseScene,
-        WinScene 
+         //StartScene,
+         GameScene
+        // HowScene,
+        //LoseScene,
+        //WinScene 
     ],
     
     
