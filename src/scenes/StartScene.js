@@ -41,10 +41,10 @@ class StartScene extends Phaser.Scene {
          //obj slime
         objcloud = this.physics.add.group();  
         cloudevent = this.time.addEvent({
-        delay: 1700,
+        delay: 7000,
         callback: function () {
-            cloud = this.physics.add.sprite(Phaser.Math.Between(950, 1000),Phaser.Math.Between(100,200),'cloud');
-            cloud.setVelocityX(-70).setDepth(3).setScale(1);
+            cloud = this.physics.add.sprite(Phaser.Math.Between(1000, 1000),Phaser.Math.Between(50,300),'cloud');
+            cloud.setVelocityX(-30).setDepth(3).setScale(0.8);
            
         },
         callbackScope: this,
