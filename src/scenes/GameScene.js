@@ -87,13 +87,13 @@ class GameScene extends Phaser.Scene {
  //objslime
         objslime = this.physics.add.group();  
         slimeevent = this.time.addEvent({
-        delay: 2600,
+        delay: 2300,
         callback: function () {
             slime = this.physics.add.sprite(Phaser.Math.Between(950, 1000),Phaser.Math.Between(300,520),'slime');
-            slime.setVelocityX(-100).setDepth(5).setScale(0.06);
+            slime.setVelocityX(-120).setDepth(5).setScale(0.08);
         
             
-            objslime.add(slime).setVelocityX(-100);
+            objslime.add(slime).setVelocityX(-120);
                 this.physics.add.collider(ninja, slime, ()=>{
                     this.scene.start('LoseScene');
                     music1.stop();
@@ -187,8 +187,8 @@ class GameScene extends Phaser.Scene {
 
         
             
-        if(true){slime.setVelocityX(-100);}
-        if(true){home.setVelocityX(-130);}
+        if(true){slime.setVelocityX(-120);}
+        if(true){home.setVelocityX(-100);}
        
             if(keyW.isDown){
                 ninja.setVelocityY(-300);
