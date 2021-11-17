@@ -41,7 +41,7 @@ class StartScene extends Phaser.Scene {
         bg.setOrigin(0,0).setDepth(1).setScale(0.87);
 
         name = this.add.image(525, 150, 'name');
-        name.setScale(0.7).setDepth(4);
+        name.setScale(0.7).setDepth(6);
 
          //obj slime
         objcloud = this.physics.add.group();  
@@ -106,7 +106,7 @@ class StartScene extends Phaser.Scene {
 
         //button-how to play
         how = this.add.image(525, 400, 'how')
-            how.setScale(0.53).setDepth(4).setInteractive();
+            how.setScale(0.53).setDepth(5).setInteractive();
         
         how.on('pointerup', () => {
             this.scene.start('HowScene');
@@ -123,7 +123,7 @@ class StartScene extends Phaser.Scene {
     }
 
     update() {
-        // if(true){cloud.setVelocityX(-70);}
+        
         
     }
 

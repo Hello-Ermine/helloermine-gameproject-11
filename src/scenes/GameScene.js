@@ -46,7 +46,7 @@ class GameScene extends Phaser.Scene {
         wall2.setImmovable().setOffset(600,1350);
         ninja = this.physics.add.sprite(200, 400, 'ninja').setDepth(5).setScale(0.12).setCollideWorldBounds(true);
         slime = this.physics.add.sprite(700, 400, 'slime').setDepth(5).setScale(0.07);
-        home = this.physics.add.image(10000,350,'home').setDepth(7.5).setScale(1).setOffset(100,80);
+        home = this.physics.add.image(10000,350,'home').setDepth(7).setScale(1.2).setOffset(100,80);
        this.physics.add.collider(ninja,wall);
        this.physics.add.collider(ninja,wall2);
 
@@ -87,13 +87,13 @@ class GameScene extends Phaser.Scene {
  //objslime
         objslime = this.physics.add.group();  
         slimeevent = this.time.addEvent({
-        delay: 2600,
+        delay: 2300,
         callback: function () {
-            slime = this.physics.add.sprite(Phaser.Math.Between(950, 1000),Phaser.Math.Between(290,550),'slime');
-            slime.setVelocityX(-80).setDepth(5).setScale(0.06);
+            slime = this.physics.add.sprite(Phaser.Math.Between(950, 1000),Phaser.Math.Between(300,520),'slime');
+            slime.setVelocityX(-120).setDepth(5).setScale(0.08);
         
             
-            objslime.add(slime).setVelocityX(-80);
+            objslime.add(slime).setVelocityX(-120);
                 this.physics.add.collider(ninja, slime, ()=>{
                     this.scene.start('LoseScene');
                     music1.stop();
@@ -110,7 +110,7 @@ class GameScene extends Phaser.Scene {
 });
     //exit 
     exit = this.add.image(930, 550, 'exit')
-    exit.setScale(0.35).setDepth(7).setInteractive();
+    exit.setScale(0.35).setDepth(9).setInteractive();
 
     exit.on('pointerup', () => {
         this.scene.start('StartScene');
@@ -128,7 +128,7 @@ class GameScene extends Phaser.Scene {
           music1.play({loop: true});
 
           nosound = this.add.image(40, 40, 'nosound')
-          nosound.setScale(0.3).setDepth(4).setInteractive();
+          nosound.setScale(0.3).setDepth(9).setInteractive();
 
           nosound.on('pointerup', () => {
                 music1.stop();
@@ -141,7 +141,7 @@ class GameScene extends Phaser.Scene {
             })
 
             sound = this.add.image(100, 45, 'sound')
-            sound.setScale(0.3).setDepth(4).setInteractive();
+            sound.setScale(0.3).setDepth(9).setInteractive();
 
             sound.on('pointerup', () => {
                 music1.play({loop: true});
@@ -169,13 +169,14 @@ class GameScene extends Phaser.Scene {
     keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
     keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
     keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
-    }
+    
   
-        // for (let i = 0; i < objGroup.getChildren().length; i++) {
-        //     if (objGroup.getChildren()[i].y < 350) {
-        //             objGroup.getChildren()[i].destroy();
-        //     }
-        // }
+        for (let i = 0; i < objslime.getChildren().length; i++) {
+             if (objslime.getChildren()[i].x < -200) {
+                    objslime.getChildren()[i].destroy();
+             }
+     }
+    }
 
         
         update(delta, time) {
@@ -186,8 +187,8 @@ class GameScene extends Phaser.Scene {
 
         
             
-        if(true){slime.setVelocityX(-80);}
-        if(true){home.setVelocityX(-130);}
+        if(true){slime.setVelocityX(-120);}
+        if(true){home.setVelocityX(-100);}
        
             if(keyW.isDown){
                 ninja.setVelocityY(-300);
@@ -207,6 +208,6 @@ class GameScene extends Phaser.Scene {
             }     
 
     }    
-}
+    }
 export default GameScene;
 
