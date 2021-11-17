@@ -82,17 +82,19 @@ class GameScene extends Phaser.Scene {
            slimeevent = this.time.addEvent({
            delay: 3000,
            callback: function () {
-              slime = this.physics.add.sprite(Phaser.Math.Between(800, 900),Phaser.Math.Between(310,500),'slime');
+              slime = this.physics.add.sprite(Phaser.Math.Between(1000, 1100),Phaser.Math.Between(310,500),'slime');
               slime.setVelocityX(-100).setDepth(5).setScale(0.07);
            
               
               objslime.add(slime).setVelocityX(-100);
                     this.physics.add.collider(ninja, slime, ()=>{
                         this.scene.start('LoseScene');
+                        music1.stop();
                     });
-                    this.physics.add.collider(ninja, home, ()=>{
+                 this.physics.add.collider(ninja, home, ()=>{
                         this.scene.start('WinScene');
-                       });
+                        music1.stop();
+                        });
            },
            callbackScope: this,
            loop: true,
@@ -120,20 +122,20 @@ class GameScene extends Phaser.Scene {
     });
 
       //เสียง
-        //  music1 = this.sound.add('music1').setVolume(0.2);
-        //  music1.play({loop: true});
+        music1 = this.sound.add('music1').setVolume(0.2);
+          music1.play({loop: true});
  
         //เปลี่ยนsceneจบ
 
-        // this.physics.add.collider(ninja, slime, ()=>{
+        //     this.physics.add.collider(ninja, slime, ()=>{
         //         this.scene.start('LoseScene');
         //         music1.stop();
-        //     });
+        //    });
 
-        // this.physics.add.collider(ninja, home, ()=>{
-        //     this.scene.start('WinScene');
+        //  this.physics.add.collider(ninja, home, ()=>{
+        //      this.scene.start('WinScene');
         //     music1.stop();
-        // });
+        //  });
 
 
         //key input
@@ -153,7 +155,7 @@ class GameScene extends Phaser.Scene {
    
         
       
-        if(true){slime.setVelocityX(-50);}
+        if(true){slime.setVelocityX(-100);}
         
         if(true){home.setVelocityX(-100);}
     
@@ -176,7 +178,7 @@ class GameScene extends Phaser.Scene {
             }    
         // destroy slime   
    for (let i = 0; i < objslime.getChildren().length; i++) {
-            if (objslime.getChildren()[i].x < -1000) {
+            if (objslime.getChildren()[i].x < -00) {
                 objslime.getChildren()[i].destroy();
             }
         }
