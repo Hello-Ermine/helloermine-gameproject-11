@@ -5,8 +5,10 @@ let play;
 let how;
 let name;
 let musicstart1 ;
-let cloud1;
-let cloud2;
+let cloud;
+let objcloud;
+let cloudevent;
+
 
 class StartScene extends Phaser.Scene {
     constructor(test) {
@@ -23,8 +25,8 @@ class StartScene extends Phaser.Scene {
         //button
         this.load.image('play', 'src/image/play.png');
         this.load.image('how', 'src/image/how to play.png');
-        // this.load.image('cloud1', 'src/image/Cloud1.png');
-        // this.load.image('cloud2', 'src/image/Cloud2.png');
+        this.load.image('cloud', 'src/image/Cloud1.png');
+        
         this.load.audio('musicstart','src/sound/musicstart1.mp3')
     }
 
@@ -36,12 +38,21 @@ class StartScene extends Phaser.Scene {
         name = this.add.image(525, 150, 'name');
         name.setScale(0.7).setDepth(4);
 
-        // cloud1 = this.add.tileSprite(0,0,600, 150, 'cloud1');
-        // cloud1.setScale(0.6).setDepth(3).setOrigin(0,0);
+         //obj slime
+        objcloud = this.physics.add.group();  
+        cloudevent = this.time.addEvent({
+        delay: 1700,
+        callback: function () {
+            cloud = this.physics.add.sprite(Phaser.Math.Between(950, 1000),Phaser.Math.Between(100,200),'cloud');
+            cloud.setVelocityX(-70).setDepth(3).setScale(1);
+           
+        },
+        callbackScope: this,
+        loop: true,
+        //paused: false,
 
-        // cloud2 = this.add.tileSprite(0,0,800, 130, 'cloud2');
-        // cloud2.setScale(1).setDepth(3).setOrigin(0,0);
-        
+        });
+                
 
         musicstart1 = this.sound.add('musicstart').setVolume(0.2);
         musicstart1.play({loop: true});
@@ -80,9 +91,7 @@ class StartScene extends Phaser.Scene {
     }
 
     update() {
-        // cloud1.tilePositionX += 1;
-        // cloud2.tilePositionX -= 1;
-        //bg.tilePositionX += 3;
+        // if(true){cloud.setVelocityX(-70);}
         
     }
 
