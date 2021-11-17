@@ -38,8 +38,9 @@ class GameScene extends Phaser.Scene {
         wall.setImmovable().setOffset(600,250);
         ninja = this.physics.add.sprite(200, 400, 'ninja').setDepth(5).setScale(0.15).setCollideWorldBounds(true);
         slime = this.physics.add.sprite(700, 400, 'slime').setDepth(5).setScale(0.07);
-        home = this.physics.add.image(5000,350,'home').setDepth(7).setScale(1).setOffset(0,-40);
+        home = this.physics.add.image(7000,350,'home').setDepth(7).setScale(1).setOffset(0,-40);
        this.physics.add.collider(ninja,wall);
+
         //ninja animation
         this.anims.create({
             key: 'ninjaAni-left',
@@ -77,9 +78,9 @@ class GameScene extends Phaser.Scene {
  //obj slime
  objslime = this.physics.add.group();  
  slimeevent = this.time.addEvent({
- delay: 3000,
+ delay: 1800,
  callback: function () {
-    slime = this.physics.add.sprite(Phaser.Math.Between(890, 900),Phaser.Math.Between(310,500),'slime');
+    slime = this.physics.add.sprite(Phaser.Math.Between(890, 900),Phaser.Math.Between(310,550),'slime');
     slime.setVelocityX(-100).setDepth(5).setScale(0.07);
  
     
