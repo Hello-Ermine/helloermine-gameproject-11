@@ -80,10 +80,11 @@ class GameScene extends Phaser.Scene {
            //obj slime
            objslime = this.physics.add.group();  
            slimeevent = this.time.addEvent({
-           delay: 500,
+           delay: 3000,
            callback: function () {
-              slime = this.physics.add.sprite(Phaser.Math.Between(750, 800),500,'slime');
-              slime.setVelocityX(-500).setDepth(5).setScale(0.07);
+              slime = this.physics.add.sprite(Phaser.Math.Between(800, 900),Phaser.Math.Between(310,500),'slime');
+              slime.setVelocityX(-100).setDepth(5).setScale(0.07);
+           
               
               objslime.add(slime).setVelocityX(-100);
                     this.physics.add.collider(ninja, slime, ()=>{
@@ -158,17 +159,17 @@ class GameScene extends Phaser.Scene {
     
            
             if(keyW.isDown){
-                ninja.setVelocityY(-350);
+                ninja.setVelocityY(-400);
             }else if(keyS.isDown){
-                ninja.setVelocityY(350);
+                ninja.setVelocityY(400);
             }else{
                 ninja.setVelocityY(0);
             }
             if(keyA.isDown){
-                ninja.setVelocityX(-350);
+                ninja.setVelocityX(-400);
                 ninja.anims.play('ninjaAni-left',true);
             }else if(keyD.isDown){
-                ninja.setVelocityX(350);
+                ninja.setVelocityX(400);
                 ninja.anims.play('ninjaAni-right',true);
             }else{
                 ninja.setVelocityX(0);
