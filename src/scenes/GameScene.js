@@ -12,8 +12,8 @@ let keyD;
 let wall;
 let slimeevent;
 let exit;
-// let objninja;
 let objslime;
+
 
 class GameScene extends Phaser.Scene {
     constructor(test) {
@@ -40,7 +40,7 @@ class GameScene extends Phaser.Scene {
         wall.setImmovable().setOffset(600,250);
         ninja = this.physics.add.sprite(200, 400, 'ninja').setDepth(5).setScale(0.15).setImmovable().setCollideWorldBounds(true);
         home = this.physics.add.image(5000,350,'home').setDepth(7).setScale(1).setOffset(0,-40);
-         slime = this.physics.add.sprite(700, 400, 'slime').setDepth(5).setScale(0.07)
+         slime = this.physics.add.sprite(700, 400, 'slime').setDepth(5).setScale(0.07);
         
         //ninja animation
         this.anims.create({
@@ -80,11 +80,12 @@ class GameScene extends Phaser.Scene {
            //obj slime
            objslime = this.physics.add.group();  
            slimeevent = this.time.addEvent({
-           delay: 3000,
+           delay: 500,
            callback: function () {
-              slime = this.physics.add.sprite(Phaser.Math.Between(400,100),100,'slime');
-              slime.setVelocityY(-100).setDepth(5).setScale(0.07);
-              objslime.add(slime).setVelocityY(-100);
+              slime = this.physics.add.sprite(Phaser.Math.Between(700,800),'slime');
+              slime.setVelocityX(-100).setDepth(5).setScale(0.07);
+              
+              objslime.add(slime).setVelocityX(-100);
                     this.physics.add.collider(ninja, slime, ()=>{
                         this.scene.start('LoseScene');
                     });
@@ -96,7 +97,13 @@ class GameScene extends Phaser.Scene {
            loop: true,
            //paused: false,
        });
+
+
+
+
+
     
+
     //exit 
     exit = this.add.image(930, 550, 'exit');
     exit.setScale(0.35).setDepth(2).setInteractive();
@@ -141,31 +148,34 @@ class GameScene extends Phaser.Scene {
         background.tilePositionX += 3;
         ninja.anims.play('ninjaAni-right', true);
         slime.anims.play('slimeAni', true);
+
+   
+        
       
-        if(true){slime.setVelocityX(-100);}
+        if(true){slime.setVelocityX(-50);}
         
         if(true){home.setVelocityX(-100);}
     
            
             if(keyW.isDown){
-                ninja.setVelocityY(-500);
+                ninja.setVelocityY(-350);
             }else if(keyS.isDown){
-                ninja.setVelocityY(500);
+                ninja.setVelocityY(350);
             }else{
                 ninja.setVelocityY(0);
             }
             if(keyA.isDown){
-                ninja.setVelocityX(-500);
+                ninja.setVelocityX(-350);
                 ninja.anims.play('ninjaAni-left',true);
             }else if(keyD.isDown){
-                ninja.setVelocityX(500);
+                ninja.setVelocityX(350);
                 ninja.anims.play('ninjaAni-right',true);
             }else{
                 ninja.setVelocityX(0);
             }    
         // destroy slime   
    for (let i = 0; i < objslime.getChildren().length; i++) {
-            if (objslime.getChildren()[i].x < -2000) {
+            if (objslime.getChildren()[i].x < -1000) {
                 objslime.getChildren()[i].destroy();
             }
         }
