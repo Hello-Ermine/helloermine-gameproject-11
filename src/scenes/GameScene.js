@@ -43,7 +43,7 @@ class GameScene extends Phaser.Scene {
         wall.setImmovable().setOffset(600,280);
         ninja = this.physics.add.sprite(200, 400, 'ninja').setDepth(5).setScale(0.12).setCollideWorldBounds(true);
         slime = this.physics.add.sprite(700, 400, 'slime').setDepth(5).setScale(0.07);
-        home = this.physics.add.image(10000,350,'home').setDepth(7.3).setScale(1).setOffset(0,-100);
+        home = this.physics.add.image(10000,500,'home').setDepth(7.5).setScale(1).setOffset(0,-40);
        this.physics.add.collider(ninja,wall);
 
         //ninja animation
@@ -80,7 +80,7 @@ class GameScene extends Phaser.Scene {
             framerate: 0,
             repeat: -1
         })
- //obj slime
+ //objslime
         objslime = this.physics.add.group();  
         slimeevent = this.time.addEvent({
         delay: 2600,
@@ -106,7 +106,7 @@ class GameScene extends Phaser.Scene {
 });
     //exit 
     exit = this.add.image(930, 550, 'exit')
-    exit.setScale(0.35).setDepth(2).setInteractive();
+    exit.setScale(0.35).setDepth(5).setInteractive();
 
     exit.on('pointerup', () => {
         this.scene.start('StartScene');
@@ -134,6 +134,19 @@ class GameScene extends Phaser.Scene {
             })
             nosound.on('pointerout', () => {
                 nosound.setScale(0.3);
+            })
+
+            sound = this.add.image(120, 40, 'sound')
+            sound.setScale(0.3).setDepth(4).setInteractive();
+
+            sound.on('pointerup', () => {
+                music1.play({loop: true});
+            })
+            sound.on('pointerover', () => {
+                sound.setScale(0.34);
+            })
+            sound.on('pointerout', () => {
+                sound.setScale(0.3);
             })
  
         //เปลี่ยนsceneจบ
