@@ -11,7 +11,8 @@ let keyW;
 let keyA;
 let keyS;
 let keyD;
-
+let objslime;
+let slimeevent;
 
 class GameScene extends Phaser.Scene {
     constructor(test) {
@@ -73,22 +74,30 @@ class GameScene extends Phaser.Scene {
             framerate: 0,
             repeat: -1
         })
-
-        // objninja = this.physics.add.image(2143, 3817, 'ninja').setImmovable();
-        // objGroup = this.physics.add.group();    
-        // event = this.time.addEvent({
-        // delay: 5000,
-        // callback: function () {
-        //     objslime = this.physics.add.image(1527.5, 100, 'slime');
-        //     objGroup.add(slime);
-        //     objGroup.setVelcityY(200);
-        //     this.physics.add.collider(slime, ninja);
-        // },
-        // callbackScope: this,
-        // loop: true,
-        // //paused: false,
-    // });
+ //obj slime
+ objslime = this.physics.add.group();  
+ slimeevent = this.time.addEvent({
+ delay: 3000,
+ callback: function () {
+    slime = this.physics.add.sprite(Phaser.Math.Between(890, 900),Phaser.Math.Between(310,500),'slime');
+    slime.setVelocityX(-100).setDepth(5).setScale(0.07);
+ 
     
+    objslime.add(slime).setVelocityX(-100);
+          this.physics.add.collider(ninja, slime, ()=>{
+              this.scene.start('LoseScene');
+              music1.stop();
+          });
+       this.physics.add.collider(ninja, home, ()=>{
+              this.scene.start('WinScene');
+              music1.stop();
+              });
+ },
+ callbackScope: this,
+ loop: true,
+ //paused: false,
+
+});
     //exit 
     exit = this.add.image(930, 550, 'exit')
     exit.setScale(0.35).setDepth(2).setInteractive();
@@ -141,7 +150,7 @@ class GameScene extends Phaser.Scene {
 
         
             
-        if(true){slime.setVelocityX(100);}
+        if(true){slime.setVelocityX(-100);}
         if(true){home.setVelocityX(-200);}
        
             if(keyW.isDown){
