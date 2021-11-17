@@ -35,8 +35,8 @@ class GameScene extends Phaser.Scene {
 
         background = this.add.tileSprite(0,0,1920,1080,'bg-play').setOrigin(0, 0).setDepth(1).setScale(0.87);
         wall = this.physics.add.image(0,-300,'bg-play').setOrigin(0, 0).setDepth(8).setScale(0.87).setVisible(false);
-        wall.setImmovable().setOffset(600,250);
-        ninja = this.physics.add.sprite(200, 400, 'ninja').setDepth(5).setScale(0.15).setCollideWorldBounds(true);
+        wall.setImmovable().setOffset(600,280);
+        ninja = this.physics.add.sprite(200, 400, 'ninja').setDepth(5).setScale(0.12).setCollideWorldBounds(true);
         slime = this.physics.add.sprite(700, 400, 'slime').setDepth(5).setScale(0.07);
         home = this.physics.add.image(7000,350,'home').setDepth(7).setScale(1).setOffset(0,-40);
        this.physics.add.collider(ninja,wall);
@@ -78,13 +78,13 @@ class GameScene extends Phaser.Scene {
  //obj slime
  objslime = this.physics.add.group();  
  slimeevent = this.time.addEvent({
- delay: 1800,
+ delay: 1700,
  callback: function () {
-    slime = this.physics.add.sprite(Phaser.Math.Between(890, 900),Phaser.Math.Between(310,550),'slime');
-    slime.setVelocityX(-100).setDepth(5).setScale(0.07);
+    slime = this.physics.add.sprite(Phaser.Math.Between(950, 1000),Phaser.Math.Between(290,550),'slime');
+    slime.setVelocityX(-70).setDepth(5).setScale(0.06);
  
     
-    objslime.add(slime).setVelocityX(-100);
+    objslime.add(slime).setVelocityX(-70);
           this.physics.add.collider(ninja, slime, ()=>{
               this.scene.start('LoseScene');
               music1.stop();
@@ -151,21 +151,21 @@ class GameScene extends Phaser.Scene {
 
         
             
-        if(true){slime.setVelocityX(-100);}
+        if(true){slime.setVelocityX(-70);}
         if(true){home.setVelocityX(-200);}
        
             if(keyW.isDown){
-                ninja.setVelocityY(-500);
+                ninja.setVelocityY(-300);
             }else if(keyS.isDown){
-                ninja.setVelocityY(500);
+                ninja.setVelocityY(300);
             }else{
                 ninja.setVelocityY(0);
             }
             if(keyA.isDown){
-                ninja.setVelocityX(-500);
+                ninja.setVelocityX(-300);
                 ninja.anims.play('ninjaAni-left',true);
             }else if(keyD.isDown){
-                ninja.setVelocityX(500);
+                ninja.setVelocityX(300);
                 ninja.anims.play('ninjaAni-right',true);
             }else{
                 ninja.setVelocityX(0);
