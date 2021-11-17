@@ -3,6 +3,9 @@ import Phaser from "phaser";
 let exit;
 let bg;
 let musicstart ;
+let sound;
+let nosound;
+
 class HowScene extends Phaser.Scene {
     constructor(test) {
         super({
@@ -15,6 +18,8 @@ class HowScene extends Phaser.Scene {
         this.load.image('bghow', 'src/image/How to play.jpeg');
         this.load.image('exit', 'src/image/exit.png');
         this.load.audio('musicstart','src/sound/musicstart1.mp3')
+        this.load.image('nosound','src/image/sound.png')
+         this.load.image('sound','src/image/on-sound.png')
     }
 
     create() {
@@ -38,6 +43,32 @@ class HowScene extends Phaser.Scene {
 
         musicstart = this.sound.add('musicstart').setVolume(0.2);
         musicstart.play({loop: true});
+
+        nosound = this.add.image(40, 40, 'nosound')
+          nosound.setScale(0.3).setDepth(4).setInteractive();
+
+          nosound.on('pointerup', () => {
+            musicstart.stop();
+            })
+            nosound.on('pointerover', () => {
+                nosound.setScale(0.34);
+            })
+            nosound.on('pointerout', () => {
+                nosound.setScale(0.3);
+            })
+
+            sound = this.add.image(100, 45, 'sound')
+            sound.setScale(0.3).setDepth(4).setInteractive();
+
+            sound.on('pointerup', () => {
+                musicstart.play({loop: true});
+            })
+            sound.on('pointerover', () => {
+                sound.setScale(0.34);
+            })
+            sound.on('pointerout', () => {
+                sound.setScale(0.3);
+            })
 
     }
 
