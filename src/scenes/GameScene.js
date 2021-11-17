@@ -49,7 +49,7 @@ class GameScene extends Phaser.Scene {
                 start: 0,
                 end: 2
             }),
-            duration: 500,
+            duration: 1000,
             framerate: 0,
             repeat: -1
         });
@@ -60,7 +60,7 @@ class GameScene extends Phaser.Scene {
                 start: 3,
                 end: 6
             }),
-            duration: 500,
+            duration: 1000,
             framerate: 0,
             repeat: -1
         });
@@ -82,9 +82,9 @@ class GameScene extends Phaser.Scene {
            slimeevent = this.time.addEvent({
            delay: 3000,
            callback: function () {
-              slime = this.physics.add.sprite(Phaser.Math.Between(700,400),600, 'slime');
-              slime.setVelocityX(100).setDepth(5).setScale(0.07);
-              objslime.add(slime).setVelocityX(0);
+              slime = this.physics.add.sprite(Phaser.Math.Between(400,100),100,'slime');
+              slime.setVelocityY(-100).setDepth(5).setScale(0.07);
+              objslime.add(slime).setVelocityY(-100);
                     this.physics.add.collider(ninja, slime, ()=>{
                         this.scene.start('LoseScene');
                     });
@@ -138,7 +138,7 @@ class GameScene extends Phaser.Scene {
 }
         update(delta, time) {
 
-        background.tilePositionX += 2;
+        background.tilePositionX += 3;
         ninja.anims.play('ninjaAni-right', true);
         slime.anims.play('slimeAni', true);
       

@@ -38,7 +38,7 @@ class WinScene extends Phaser.Scene {
         })
 
          musicw = this.sound.add('musicw').setVolume(0.18);
-         musicw.play({loop: true});
+         musicw.play({loop: false});
 
     }
 
