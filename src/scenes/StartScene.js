@@ -9,6 +9,9 @@ let cloud;
 let objcloud;
 let cloudevent;
 
+let sound;
+let nosound;
+
 
 class StartScene extends Phaser.Scene {
     constructor(test) {
@@ -28,6 +31,8 @@ class StartScene extends Phaser.Scene {
         this.load.image('cloud', 'src/image/Cloud1.png');
         
         this.load.audio('musicstart','src/sound/musicstart1.mp3')
+        this.load.image('nosound','src/image/sound.png')
+         this.load.image('sound','src/image/on-sound.png')
     }
 
     create() {
@@ -53,10 +58,37 @@ class StartScene extends Phaser.Scene {
 
         });
                 
+//เพลง
 
         musicstart1 = this.sound.add('musicstart').setVolume(0.2);
         musicstart1.play({loop: true});
         
+        nosound = this.add.image(40, 40, 'nosound')
+          nosound.setScale(0.3).setDepth(4).setInteractive();
+
+          nosound.on('pointerup', () => {
+            musicstart1.stop();
+            })
+            nosound.on('pointerover', () => {
+                nosound.setScale(0.34);
+            })
+            nosound.on('pointerout', () => {
+                nosound.setScale(0.3);
+            })
+
+            sound = this.add.image(100, 45, 'sound')
+            sound.setScale(0.3).setDepth(4).setInteractive();
+
+            sound.on('pointerup', () => {
+                musicstart1.play({loop: true});
+            })
+            sound.on('pointerover', () => {
+                sound.setScale(0.34);
+            })
+            sound.on('pointerout', () => {
+                sound.setScale(0.3);
+            })
+ 
         //button-play
         play = this.add.image(525, 300, 'play')
             play.setScale(0.38).setDepth(5).setInteractive();
