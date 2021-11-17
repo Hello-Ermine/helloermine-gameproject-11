@@ -87,11 +87,11 @@ class GameScene extends Phaser.Scene {
  //objslime
         objslime = this.physics.add.group();  
         slimeevent = this.time.addEvent({
-        delay: 2200,
+        delay: 2050,
         callback: function () {
-            slime = this.physics.add.sprite(Phaser.Math.Between(950, 1000),Phaser.Math.Between(300,520),'slime');
+            slime = this.physics.add.sprite(Phaser.Math.Between(950, 1000),Phaser.Math.Between(315,500),'slime');
             slime.setVelocityX(-120).setDepth(5).setScale(0.08);
-        
+          
             
             objslime.add(slime).setVelocityX(-120);
                 this.physics.add.collider(ninja, slime, ()=>{
