@@ -61,7 +61,7 @@ class WinScene extends Phaser.Scene {
            sound.setScale(0.3).setDepth(4).setInteractive();
 
            sound.on('pointerup', () => {
-            musicw.play({loop: true});
+            musicw.play({loop: false});
            })
            sound.on('pointerover', () => {
                sound.setScale(0.34);
