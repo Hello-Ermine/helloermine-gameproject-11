@@ -58,7 +58,7 @@ class LoseScene extends Phaser.Scene {
            sound.setScale(0.3).setDepth(4).setInteractive();
 
            sound.on('pointerup', () => {
-            musicl.play({loop: true});
+            musicl.play({loop: false});
            })
            sound.on('pointerover', () => {
                sound.setScale(0.34);
