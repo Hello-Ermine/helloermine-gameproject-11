@@ -84,7 +84,7 @@ class GameScene extends Phaser.Scene {
             framerate: 0,
             repeat: -1
         })
- //objslime
+        //objslime
         objslime = this.physics.add.group();  
         slimeevent = this.time.addEvent({
         delay: 2050,
@@ -163,14 +163,13 @@ class GameScene extends Phaser.Scene {
             music1.stop();
         });
 
-        //key input
-
+    //key input
     keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
     keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
     keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
     keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
     
-  
+  //ลบมอนเตอร์นอกซีน
         for (let i = 0; i < objslime.getChildren().length; i++) {
              if (objslime.getChildren()[i].x < -200) {
                     objslime.getChildren()[i].destroy();
